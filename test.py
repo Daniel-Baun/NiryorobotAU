@@ -1,14 +1,20 @@
 from pyniryo import *
 from poses import *
 
-robot_ip_address = "169.254.200.201"
+#Constants
+
+robot1_ip_address = "169.254.200.201"
+robot0_ip_address = "169.254.200.200"
+
+z_offset_height = 0.002
+
 
 # Connect to robot & calibrate
-robot1 = NiryoRobot(robot_ip_address)
+robot1 = NiryoRobot(robot1_ip_address)
 robot1.calibrate_auto()
 # Move joints
 #robot.move_joints(0.0, 0.151, -0.487, 0.047, 0.000, -0.129)
-robot1.move_joints(storage_observer)
+robot1.move_joints(position_storage_observer_robot1)
 print(robot1.get_workspace_list())
 obj_found, shape_ret, color_ret = robot1.vision_pick('STORAGE_1_WORKSPACE',
                                                     height_offset=0.0,
