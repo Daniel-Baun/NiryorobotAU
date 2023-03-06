@@ -20,7 +20,15 @@ obj_found, shape_ret, color_ret = robot1.vision_pick('STORAGE_1_WORKSPACE',
                                                     height_offset=0.0,
                                                     shape=ObjectShape.SQUARE,
                                                     color=ObjectColor.RED)
-robot1.wait(3)
+
+robot1.move_joints(position_over_con1_robot1)
+robot1.open_gripper(1000)
+
+#start conveyer belt 1
+conveyer_id = robot1.set_conveyor()
+robot1.run_conveyor(conveyer_id, speed=50, direction=ConveyorDirection.FORWARD)
+
+robot1.wait(5)
 
 robot1.move_to_home_pose()
 # Turn learning mode ON
