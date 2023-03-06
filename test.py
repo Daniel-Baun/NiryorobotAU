@@ -22,6 +22,8 @@ obj_found, shape_ret, color_ret = robot1.vision_pick('STORAGE_1_WORKSPACE',
                                                     color=ObjectColor.RED)
 robot1.wait(3)
 
+
+
 robot1.move_to_home_pose()
 # Turn learning mode ON
 robot1.set_learning_mode(True)
