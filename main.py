@@ -1,3 +1,11 @@
+import os
+import sys
+import math
+import copy
+import random
+import time
+import yaml
+from threading import Lock, Thread
 from pyniryo import *
 from poses import *
 
@@ -26,10 +34,10 @@ robot0.calibrate_auto()
 robot1.move_joints(position_storage_observer_robot1)
 robot1.wait(3)
 print(robot1.get_workspace_list())
-obj_found, shape_ret, color_ret = robot1.vision_pick('STORAGE_1_WORKSPACE',
+obj_found, shape_ret, color_ret = robot1.vision_pick('STORAGE_WORKSPACE_NEW',
                                                     height_offset=0.0,
-                                                    shape=ObjectShape.SQUARE,
-                                                    color=ObjectColor.BLUE)
+                                                    shape=ObjectShape.ANY,
+                                                    color=ObjectColor.ANY)
 
 robot1.move_joints(position_over_con1_robot1)
 robot1.release_with_tool()
