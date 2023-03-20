@@ -233,7 +233,7 @@ def load_yaml(path_):
 def main():
     print("I get here 1")
     saved_joint_poses = load_saved_joint_poses()  # load all the robots poses
-
+    print("I get here 2")
     client1.release_with_tool()
     client2.release_with_tool()
 
@@ -275,6 +275,7 @@ if __name__ == '__main__':
 
     calib_thread_r1 = Thread(target=client1.calibrate, args=[CalibrateMode.AUTO, ])
     calib_thread_r2 = Thread(target=client2.calibrate, args=[CalibrateMode.AUTO, ])
+    print("I do not need to calibrate")
     calib_thread_r1.start()
     calib_thread_r2.start()
     calib_thread_r1.join()
@@ -282,9 +283,8 @@ if __name__ == '__main__':
 
     client1.update_tool()
     client2.update_tool()
-
-    main()
     print("I get here 0")
+    main()
 
     
 ## Connect to robot & calibrate
@@ -328,3 +328,8 @@ if __name__ == '__main__':
 ## Stop TCP connection
 #robot1.close_connection()
 #robot0.close_connection()
+
+
+#Note to myself
+#I need to add a new observation pose for the second robot which it can then detect an object
+#I need to create a new observation pose for this in the ask_pos function.
