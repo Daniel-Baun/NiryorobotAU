@@ -376,3 +376,4 @@ if __name__ == '__main__':
 #best possible vision settings when starting
 #add gracefull killer
 #optimize time to pickup between robots
+#randomize placearea 
