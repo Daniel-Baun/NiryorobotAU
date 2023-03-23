@@ -39,15 +39,12 @@ class RobotsMains:
 
         self.client1.set_brightness(brightness_level)
 
-        self.conveyor_lock = Lock()
+        self.slope_lock = Lock()
 
         self.workspace = workspace
         self.conveyor_id = conveyor_id
         self.conveyor_move_time = 0
 
-    def conveyor_controller(self, speed: int):
-        self.client1.control_conveyor(conveyor_id, True, speed, ConveyorDirection.FORWARD)
-        
     # starting a thread of each robot
     def run(self):
         self.conveyor_id = self.client1.set_conveyor()
@@ -64,7 +61,7 @@ class RobotLoop(Thread):
         self.parent = parent
         self.saved_joints_poses = self.parent.saved_joints_poses
         self.client = client
-        self.conveyor_lock = self.parent.conveyor_lock
+
         Thread.__init__(self)  # init this class has a thread
 
     def run(self):
@@ -73,10 +70,6 @@ class RobotLoop(Thread):
 
     def robot_loop(self):
         pass
-    def stop_robot(self):
-        pass
-
-    
 
 class Robot1(RobotLoop):
     def __init__(self, client, parent, workspace):
@@ -84,39 +77,31 @@ class Robot1(RobotLoop):
 
         self.workspace = workspace
 
-    def robot_loop(self):
+    def robot1_loop(self):
         #Robot1 needs to start connected conveyor belt and starts to look after possible pickups
         print("Robot1 loop start")
         self.client.update_tool()
         self.client.release_with_tool()
-        self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
+        self.client.control_conveyor(self.parent.conveyor_id, False, conveyor_speed, ConveyorDirection.FORWARD)
+
         while True:
             while True:
                 obj_found, *_ = self.client.vision_pick(workspace_storage, z_offset, shape=ObjectShape.ANY,
                                                         color=ObjectColor.ANY)
                 if obj_found:
                     break
-                self.client.wait(2)
-
+                self.wait_obj()
+        
             print("Robot1 | going over Conveyor ")
-            self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"])
+            self.client.move_joints(*self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"]))
             print("Robot1 | dropping pawn ")
             self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client1"])  # drop
             self.client.release_with_tool()
-            print("locked robot1 ", {self.conveyor_lock.locked()})    
-            self.conveyor_lock.acquire() # locks use of conveyorbelt for others
-            print("is locked robot1 ", {self.conveyor_lock.locked()})
-
-            self.parent.conveyor_controller(100) # start conveyor belt
-
-            self.conveyor_lock.release() # unlocks use of conveyor for others
-            print("unlocked robot1 ", {self.conveyor_lock.locked()})
-            self.client.wait(8)    
             self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
 
-            self.client.wait(0.2)
+            time.sleep(0.1)
     
-    def wait_obj(self): # old
+    def wait_obj(self):
         self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])  # observation
         obj_found, pos, shape, color = self.client.detect_object(workspace_storage, shape=ObjectShape.ANY,
                                                                  color=ObjectColor.ANY)
@@ -127,47 +112,22 @@ class Robot0(RobotLoop):
     def __init__(self, client, parent):
         super().__init__(client, parent)
 
-
-
     def robot_loop(self):
-    
         print("Back Ned loop start")
         self.client.update_tool()
         self.client.release_with_tool()
-        sensor_pin_id = PinID.DI5
+
         while True:
-            while self.client.digital_read(sensor_pin_id) == PinState.HIGH:
-                self.client.wait(0.2)
-            print("locked robot0 ", {self.conveyor_lock.locked()})    
-            self.conveyor_lock.acquire()
-            print("is locked robot0 ", {self.conveyor_lock.locked()})
-            self.parent.conveyor_controller(0)
-            self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])
-            self.client.grasp_with_tool()
-            self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
-            self.client.move_joints(self.saved_joints_poses["drop_positions_of_client2"])
-            self.client.release_with_tool()
-
-            self.conveyor_lock.release()
-            print("unlocked robot0 ", {self.conveyor_lock.locked()})    
-            self.client.wait(0.2)
-            self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
-        #self.client.move_joints(*self.saved_joints_poses["client0_observation_pose"])
-        
-
-        
-        #
-        #while True:
-        #    self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])  # observation
-        #    obj_found, pos, shape, color = self.client.detect_object(workspace_storage, shape=ObjectShape.ANY,
-        #                                                         color=ObjectColor.ANY)
-        #    if obj_found and pos[0] < 0.90:
-        #        self.client.control_conveyor(self.parent.conveyor_id, False, 0, ConveyorDirection.FORWARD)
-        #        self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])  # grab
-        #        self.client.grasp_with_tool()
-        #        self.client.move_joints(*self.saved_joints_poses["client2_intermediate_pos"])
-        #        self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client2"])
-        #        self.client.release_with_tool()
+            self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])  # observation
+            obj_found, pos, shape, color = self.client.detect_object(workspace_storage, shape=ObjectShape.ANY,
+                                                                 color=ObjectColor.ANY)
+            if obj_found and pos[0] < 0.90:
+                self.client.control_conveyor(self.parent.conveyor_id, False, 0, ConveyorDirection.FORWARD)
+                self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])  # grab
+                self.client.grasp_with_tool()
+                self.client.move_joints(*self.saved_joints_poses["client2_intermediate_pos"])
+                self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client2"])
+                self.client.release_with_tool()
 
 
 # - Initialize positions
@@ -315,6 +275,7 @@ if __name__ == '__main__':
 
     calib_thread_r1 = Thread(target=client1.calibrate, args=[CalibrateMode.AUTO, ])
     calib_thread_r2 = Thread(target=client2.calibrate, args=[CalibrateMode.AUTO, ])
+    print("I do not need to calibrate")
     calib_thread_r1.start()
     calib_thread_r2.start()
     calib_thread_r1.join()
@@ -371,10 +332,5 @@ if __name__ == '__main__':
 
 
 #Note to myself
-
-#self.client1.control_conveyor #ændre client1 til parameter
-#best possible vision settings when starting
-#add gracefull killer
-#optimize time to pickup between robots
-#randomize placearea 
-#Rette pick position for robot0 på con1
+#I need to add a new observation pose for the second robot which it can then detect an object
+#I need to create a new observation pose for this in the ask_pos function.
