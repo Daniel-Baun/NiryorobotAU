@@ -30,9 +30,21 @@ def get_quantity_product(product: str, cursor):
     
     return cursor.fetchone()
 
-def change_quantity_product():
+def change_quantity_product(product: str, cursor):
+    query = ("UPDATE public.stock_quant " +
+            "SET quantity = quantity - 1 " +
+            "FROM public.product_product " +
+            "WHERE public.stock_quant.product_id = public.product_product.id " +
+            "AND public.product_product.default_code = %s AND public.stock_quant.quantity > 0")
+    cursor.execute(query, (product,))
+    connection.commit()
+    return cursor.fetchone()
+
 
     
+print(check_connection('main_db', 'au682915', 'admin', 'localhost', '5432'))
+print(get_quantity_product('GR01', cur))
+change_quantity_product('GR01', cur)
 print(get_quantity_product('GR01', cur))
 
 connection.close()  
