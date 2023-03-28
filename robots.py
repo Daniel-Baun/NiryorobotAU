@@ -8,13 +8,16 @@ import yaml
 from threading import Lock, Thread
 from pyniryo import *
 from poses import *
-from main import *
-
+from main import match_table_ref_to_robots
 from settings import * 
+import queue
 
 conveyor_id = ConveyorID.ID_1
-
-
+orders_queue= queue.Queue()
+temp = (match_table_ref_to_robots("GR01"))
+shape = temp[0]
+color = temp[1]
+orders_queue.put({shape, color})
 
 class RobotsMains:
     def __init__(self, robot1, robot0, workspace, saved_joints_poses):
@@ -71,43 +74,37 @@ class Robot1(RobotLoop):
         self.workspace = workspace
 
     def robot_loop(self):
-        #Robot1 needs to start connected conveyor belt and starts to look after possible pickups
         print("Robot1 loop start")
         self.client.update_tool()
         self.client.release_with_tool()
         self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
         while True:
-            while True:
-                obj_found, *_ = self.client.vision_pick(workspace_storage, z_offset, shape=ObjectShape.ANY,
-                                                        color=ObjectColor.ANY)
-                if obj_found:
-                    break
-                self.client.wait(2)
+            print(orders_queue)
+            while not(orders_queue.empty()):
+                local_shape, local_color = orders_queue.get()
 
-            print("Robot1 | going over Conveyor ")
-            self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"])
-            print("Robot1 | dropping pawn ")
-            self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client1"])  # drop
-            self.client.release_with_tool()
-            print("locked robot1 ", {self.conveyor_lock.locked()})    
-            self.conveyor_lock.acquire() # locks use of conveyorbelt for others
-            print("is locked robot1 ", {self.conveyor_lock.locked()})
 
-            self.parent.conveyor_controller(100) # start conveyor belt
+                #Robot1 needs to start connected conveyor belt and starts to look after possible pickups        
+                self.client.vision_pick(workspace_storage, z_offset, shape=local_shape,
+                                                            color=local_color)
+                print("Robot1 | going over Conveyor ")
+                self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"])
+                print("Robot1 | dropping pawn ")
+                self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client1"])  # drop
+                self.client.release_with_tool()
+                print("locked robot1 ", {self.conveyor_lock.locked()})    
+                self.conveyor_lock.acquire() # locks use of conveyorbelt for others
+                print("is locked robot1 ", {self.conveyor_lock.locked()})
 
-            self.conveyor_lock.release() # unlocks use of conveyor for others
-            print("unlocked robot1 ", {self.conveyor_lock.locked()})
-            self.client.wait(8)    
-            self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
+                self.parent.conveyor_controller(100) # start conveyor belt
 
-            self.client.wait(0.2)
-    
-    def wait_obj(self): # old
-        self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])  # observation
-        obj_found, pos, shape, color = self.client.detect_object(workspace_storage, shape=ObjectShape.ANY,
-                                                                 color=ObjectColor.ANY)
-        if obj_found and pos[0] < 0.90:
-            return
+                self.conveyor_lock.release() # unlocks use of conveyor for others
+                print("unlocked robot1 ", {self.conveyor_lock.locked()})
+                self.client.wait(8)    
+                self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
+
+                self.client.wait(0.2)
+            self.client.wait(1)
 
 class Robot0(RobotLoop):
     def __init__(self, client, parent):
@@ -365,6 +362,7 @@ if __name__ == '__main__':
 #optimize time to pickup between robots
 #randomize placearea 
 
+#Fix {<ObjectColor.GREEN: 'GREEN'>, <ObjectShape.SQUARE: 'SQUARE'>} in main to only contain ObjectColor.GREEN and ObjectShape.SQUARE
 
 
 #Done
