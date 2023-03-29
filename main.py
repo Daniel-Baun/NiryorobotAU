@@ -11,14 +11,13 @@ from poses import *
 from odoo import *
 from settings import *
 import queue
-import multiprocessing
+from multiprocessing import Process, Queue
+
 
 connection = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
 
 cur = connection.cursor()
 
-
-orders_queue = queue.Queue()
 
 
 def match_table_ref_to_robots(order: str):
@@ -46,13 +45,15 @@ def execute_order_66(order: str):
     
     return shape, color
 
-def while_loop():
-    print(match_table_ref_to_robots("GR01"))
+def while_loop(q):
     restart = True
     while restart:       
         while True:
             restart = False
-            user_input = input("Enter order id ")
+            print("Got here 0")
+            #user_input = "GR01"
+            user_input = input("Enter order id: ")
+            print("Got here 1")
             
             if user_input.lower() == "exit":
                 break
@@ -64,11 +65,22 @@ def while_loop():
                 break
             
             sanitised_input = match_table_ref_to_robots(user_input)
-            orders_queue.put(sanitised_input)
-            print(orders_queue)
+            q.put(sanitised_input)
+            print(q)
             change_quantity_product(user_input, cur, connection)
 if __name__ == "__main__":
-    while_loop()
+    q = Queue()
+    p = Process(target=while_loop, args=(q,))
+    p.start()
+    #p.join()
+
+
+#SELECT id as temp_id,desc_item
+#FROM public.orders
+#WHERE id = (SELECT MIN(id) FROM public.orders) AND status = 'WAITING';
+#UPDATE public.orders 
+#SET status='PROCESSING' 
+#WHERE id = (SELECT Min(id) FROM public.orders WHERE status = 'WAITING');
 
 
 
