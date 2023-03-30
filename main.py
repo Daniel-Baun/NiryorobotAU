@@ -69,18 +69,19 @@ def while_loop(q):
             print(q)
             change_quantity_product(user_input, cur, connection)
 if __name__ == "__main__":
-    q = Queue()
-    p = Process(target=while_loop, args=(q,))
-    p.start()
-    #p.join()
+    #put_queue(cur, connection, "GR01", 1)
+    print("Put into DB")
+    data=pop_queue(cur)
+    
+    print("Robot will use the following data: ", data[0])
+    update_order_status(cur, connection, data[0], "PROCESSING")
+    print("updates order")
 
 
-#SELECT id as temp_id,desc_item
-#FROM public.orders
-#WHERE id = (SELECT MIN(id) FROM public.orders) AND status = 'WAITING';
-#UPDATE public.orders 
-#SET status='PROCESSING' 
-#WHERE id = (SELECT Min(id) FROM public.orders WHERE status = 'WAITING');
+
+
+
+
 
 
 

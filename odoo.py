@@ -32,6 +32,35 @@ def change_quantity_product( product: str, cursor, conn):
     conn.commit()
     return
 
+def pop_queue(cursor):
+    query = ("SELECT id, desc_item "+
+            "FROM public.orders "+
+            "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'WAITING')")
+    cursor.execute(query)
+    return cursor.fetchone()
+
+def update_order_status(cursor, conn, id, status):
+    query = ("UPDATE public.orders "+
+             "SET status =%s "+ 
+             "WHERE id = %s")
+    cursor.execute(query,(status,id,))
+    conn.commit()
+    return
+
+def put_queue(cursor, conn, desc_item, no_product):
+    query = ("INSERT INTO public.orders (desc_item, no_product)"+
+             "VALUES(%s, %s)")
+    cursor.execute(query, (desc_item, no_product,))
+    conn.commit()
+    return
+
+
+#SELECT id as temp_id,desc_item
+#FROM public.orders
+#WHERE id = (SELECT MIN(id) FROM public.orders) AND status = 'WAITING';
+#UPDATE public.orders 
+#SET status='PROCESSING' 
+#WHERE id = (SELECT Min(id) FROM public.orders WHERE status = 'WAITING');
 
     
 #print(check_connection('main_db', 'au682915', 'admin', 'localhost', '5432'))

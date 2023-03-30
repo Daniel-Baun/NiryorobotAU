@@ -17,7 +17,7 @@ orders_queue= queue.Queue()
 temp = (match_table_ref_to_robots("GR01"))
 shape = temp[0]
 color = temp[1]
-orders_queue.put({shape, color})
+print(orders_queue.put({shape, color}))
 
 class RobotsMains:
     def __init__(self, robot1, robot0, workspace, saved_joints_poses):
