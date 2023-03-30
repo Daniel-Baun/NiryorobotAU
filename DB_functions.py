@@ -1,6 +1,6 @@
 #from odoo import api, models, fields
 import psycopg2
-
+from pyniryo import *
 
 
 def check_connection(database: str, user: str, password: str, host: str, port: str):
@@ -12,6 +12,24 @@ def check_connection(database: str, user: str, password: str, host: str, port: s
         return False
 
 
+def match_table_ref_to_robots(order: str):
+    try:
+        match order:
+                case 'GR01':
+                    return (ObjectShape.SQUARE, ObjectColor.GREEN)
+                case 'GC01':
+                    return (ObjectShape.CIRCLE, ObjectColor.GREEN)
+                case 'RR01':
+                    return (ObjectShape.SQUARE, ObjectColor.RED)
+                case 'RC01':
+                    return (ObjectShape.CIRCLE, ObjectColor.RED)
+                case 'BR01':
+                    return (ObjectShape.SQUARE, ObjectColor.BLUE)
+                case 'BC01':
+                    return (ObjectShape.CIRCLE, ObjectColor.BLUE)
+    except:
+        print("Input invalid or does not exist in database")
+
 def get_quantity_product(product: str, cursor):
 
     query = ("SELECT public.stock_quant.quantity "+ 
@@ -19,8 +37,10 @@ def get_quantity_product(product: str, cursor):
             "JOIN public.product_product ON public.stock_quant.product_id = public.product_product.id "+
             "WHERE public.product_product.default_code = %s AND public.stock_quant.quantity > -1")
     cursor.execute(query, (product,))
-    
-    return int(cursor.fetchone()[0])
+    data = cursor.fetchone()
+    if data == None:
+        return 0
+    return int(data[0])
 
 def change_quantity_product( product: str, cursor, conn):
     query = ("UPDATE public.stock_quant " +
@@ -47,12 +67,20 @@ def update_order_status(cursor, conn, id, status):
     conn.commit()
     return
 
+def product_avaliable(product, no_product, cursor):
+    return (get_quantity_product(product, cursor) >= no_product)
+
+
 def put_queue(cursor, conn, desc_item, no_product):
-    query = ("INSERT INTO public.orders (desc_item, no_product)"+
-             "VALUES(%s, %s)")
-    cursor.execute(query, (desc_item, no_product,))
-    conn.commit()
-    return
+    if (product_avaliable(desc_item, no_product, cursor)):
+        query = ("INSERT INTO public.orders (desc_item, no_product)"+
+                 "VALUES(%s, %s)")
+        cursor.execute(query, (desc_item, no_product,))
+        conn.commit()
+        return
+    else:
+        print("Stock not avaliable for order")
+        return
 
 
 #SELECT id as temp_id,desc_item

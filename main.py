@@ -8,7 +8,7 @@ import yaml
 from threading import Lock, Thread
 from pyniryo import *
 from poses import *
-from odoo import *
+from DB_functions import *
 from settings import *
 import queue
 from multiprocessing import Process, Queue
@@ -20,23 +20,7 @@ cur = connection.cursor()
 
 
 
-def match_table_ref_to_robots(order: str):
-    try:
-        match order:
-                case 'GR01':
-                    return (ObjectShape.SQUARE, ObjectColor.GREEN)
-                case 'GC01':
-                    return (ObjectShape.CIRCLE, ObjectColor.GREEN)
-                case 'RR01':
-                    return (ObjectShape.SQUARE, ObjectColor.RED)
-                case 'RC01':
-                    return (ObjectShape.CIRCLE, ObjectColor.RED)
-                case 'BR01':
-                    return (ObjectShape.SQUARE, ObjectColor.BLUE)
-                case 'BC01':
-                    return (ObjectShape.CIRCLE, ObjectColor.BLUE)
-    except:
-        print("Input invalid or does not exist in database")
+
 
 
 def execute_order_66(order: str):
@@ -45,37 +29,33 @@ def execute_order_66(order: str):
     
     return shape, color
 
-def while_loop(q):
+def while_loop():
     restart = True
     while restart:       
         while True:
             restart = False
             print("Got here 0")
             #user_input = "GR01"
-            user_input = input("Enter order id: ")
+            user_input_item_desc = input("Enter order item description: ")
+            user_input_product_no = int(input("Enter no items: "))
+
             print("Got here 1")
             
-            if user_input.lower() == "exit":
+            if user_input_item_desc.lower() == "exit":
                 break
             
             check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
-            if (get_quantity_product(user_input, cur)==0):
+            if not(product_avaliable(user_input_item_desc, user_input_product_no, cur)):
                 print("Error, no avaliable stock for your order id")
                 restart = True
                 break
             
-            sanitised_input = match_table_ref_to_robots(user_input)
-            q.put(sanitised_input)
-            print(q)
-            change_quantity_product(user_input, cur, connection)
+            change_quantity_product(user_input_item_desc, cur, connection)
+            put_queue(cur, connection, user_input_item_desc, user_input_product_no)
 if __name__ == "__main__":
     #put_queue(cur, connection, "GR01", 1)
-    print("Put into DB")
-    data=pop_queue(cur)
-    
-    print("Robot will use the following data: ", data[0])
-    update_order_status(cur, connection, data[0], "PROCESSING")
-    print("updates order")
+    while_loop()
+
 
 
 

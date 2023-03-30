@@ -20,6 +20,7 @@ sensor_pin_id = PinID.DI5
 
 # Run conveyor and wait until the IR sensor detects an object
 robot0.run_conveyor(conveyor_id_1)
+robot0.stop_conveyor(conveyor_id_1)
 while robot0.digital_read(sensor_pin_id) == PinState.HIGH:
     robot0.wait(0.1)
 

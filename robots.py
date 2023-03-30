@@ -10,13 +10,14 @@ from pyniryo import *
 from poses import *
 from main import match_table_ref_to_robots
 from settings import * 
-import queue
+from DB_functions import *
+
 
 conveyor_id = ConveyorID.ID_1
 
 
 class RobotsMains:
-    def __init__(self, robot1, robot0, workspace, saved_joints_poses):
+    def __init__(self, robot1, robot0, workspace, saved_joints_poses, DB_conn):
         self.saved_joints_poses = saved_joints_poses
 
         self.client1 = robot1
@@ -29,6 +30,8 @@ class RobotsMains:
         self.workspace = workspace
         self.conveyor_id = conveyor_id
         self.conveyor_move_time = 0
+        self.DB_conn = DB_conn
+        self.cursor = DB_conn.cursor()
 
     def conveyor_controller(self, speed: int):
         self.client1.control_conveyor(conveyor_id, True, speed, ConveyorDirection.FORWARD)
@@ -71,15 +74,18 @@ class Robot1(RobotLoop):
 
     def robot_loop(self):
         print("Robot1 loop start")
-        self.client.update_tool()
+        self.client.update_tool() 
         self.client.release_with_tool()
+       
         self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
         while True:
-            #SENERE
-            print(orders_queue)
-            while not(orders_queue.empty()):
-                local_shape, local_color = orders_queue.get()
-
+            data = pop_queue(self.parent.cursor)
+            print(data, type(data))
+            if not(data == None):
+                self.client.wait(0.5)
+                local_shape, local_color = match_table_ref_to_robots(data[1])
+                update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "PROCESSING")
+                
 
                 #Robot1 needs to start connected conveyor belt and starts to look after possible pickups        
                 self.client.vision_pick(workspace_storage, z_offset, shape=local_shape,
@@ -97,7 +103,7 @@ class Robot1(RobotLoop):
 
                 self.conveyor_lock.release() # unlocks use of conveyor for others
                 print("unlocked robot1 ", {self.conveyor_lock.locked()})
-                self.client.wait(8)    
+                self.client.wait(10)    
                 self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
 
                 self.client.wait(0.2)
@@ -118,6 +124,7 @@ class Robot0(RobotLoop):
         while True:
             while self.client.digital_read(sensor_pin_id) == PinState.HIGH:
                 self.client.wait(0.2)
+            self.client.wait(0.8)
             print("locked robot0 ", {self.conveyor_lock.locked()})    
             self.conveyor_lock.acquire()
             print("is locked robot0 ", {self.conveyor_lock.locked()})
@@ -256,13 +263,13 @@ def main_robot():
     print("I get here 2")
     client1.release_with_tool()
     client2.release_with_tool()
-
+    DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
     ws_list = client1.get_workspace_list()
     if workspace_storage not in ws_list:
         print('Error : ', workspace_storage, 'not found in robot1 workspace list..')
         create_new_workspace()
 
-    main_loops = RobotsMains(client1, client2, workspace_storage, saved_joint_poses)
+    main_loops = RobotsMains(client1, client2, workspace_storage, saved_joint_poses, DB_conn)
     main_loops.run()
 
 def nothing():
@@ -359,10 +366,9 @@ if __name__ == '__main__':
 #optimize time to pickup between robots
 #randomize placearea 
 
-#Fix {<ObjectColor.GREEN: 'GREEN'>, <ObjectShape.SQUARE: 'SQUARE'>} in main to only contain ObjectColor.GREEN and ObjectShape.SQUARE
 
 #Add antal orderer, så vi bruger no_product til fetch funktionen
-
+#add check connetion robotloop1 med kun connection og ikke credentials på login
 
 #Done
 #Rette pick position for robot0 på con1
