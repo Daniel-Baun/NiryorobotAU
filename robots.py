@@ -13,11 +13,7 @@ from settings import *
 import queue
 
 conveyor_id = ConveyorID.ID_1
-orders_queue= queue.Queue()
-temp = (match_table_ref_to_robots("GR01"))
-shape = temp[0]
-color = temp[1]
-print(orders_queue.put({shape, color}))
+
 
 class RobotsMains:
     def __init__(self, robot1, robot0, workspace, saved_joints_poses):
@@ -79,6 +75,7 @@ class Robot1(RobotLoop):
         self.client.release_with_tool()
         self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
         while True:
+            #SENERE
             print(orders_queue)
             while not(orders_queue.empty()):
                 local_shape, local_color = orders_queue.get()
@@ -363,6 +360,8 @@ if __name__ == '__main__':
 #randomize placearea 
 
 #Fix {<ObjectColor.GREEN: 'GREEN'>, <ObjectShape.SQUARE: 'SQUARE'>} in main to only contain ObjectColor.GREEN and ObjectShape.SQUARE
+
+#Add antal orderer, så vi bruger no_product til fetch funktionen
 
 
 #Done
