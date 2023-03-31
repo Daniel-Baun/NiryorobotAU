@@ -8,7 +8,6 @@ import copy
 import random
 import time
 import yaml
-import packaging
 from threading import Lock, Thread
 from pyniryo import *
 

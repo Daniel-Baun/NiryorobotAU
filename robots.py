@@ -29,7 +29,6 @@ class RobotsMains:
 
         self.workspace = workspace
         self.conveyor_id = conveyor_id
-        self.conveyor_move_time = 0
         self.DB_conn = DB_conn
         self.cursor = DB_conn.cursor()
 
@@ -112,11 +111,18 @@ class Robot1(RobotLoop):
 class Robot0(RobotLoop):
     def __init__(self, client, parent):
         super().__init__(client, parent)
+        placement_counter = 0
+        self.placement_counter = placement_counter
 
 
+    def modulo_place_pos(self):
+        # iterate over the 9 possible positions using modulo and incrementing the placement_counter
+        if self.placement_counter%9 == 0:
+            self.placement_counter = 0
+        self.client.move_joints(self.saved_joints_poses[f"drop_position_{self.placement_counter}_robot0"])
+        self.placement_counter += 1
 
     def robot_loop(self):
-    
         print("Back Ned loop start")
         self.client.update_tool()
         self.client.release_with_tool()
@@ -125,6 +131,7 @@ class Robot0(RobotLoop):
             while self.client.digital_read(sensor_pin_id) == PinState.HIGH:
                 self.client.wait(0.2)
             self.client.wait(0.8)
+            print("Counter is: ", self.placement_counter)
             print("locked robot0 ", {self.conveyor_lock.locked()})    
             self.conveyor_lock.acquire()
             print("is locked robot0 ", {self.conveyor_lock.locked()})
@@ -132,7 +139,7 @@ class Robot0(RobotLoop):
             self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])
             self.client.grasp_with_tool()
             self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
-            self.client.move_joints(self.saved_joints_poses["drop_positions_of_client2"])
+            self.modulo_place_pos()
             self.client.release_with_tool()
 
             self.conveyor_lock.release()
@@ -365,10 +372,8 @@ if __name__ == '__main__':
 #add gracefull killer
 #optimize time to pickup between robots
 #randomize placearea 
-
-
 #Add antal orderer, så vi bruger no_product til fetch funktionen
 #add check connetion robotloop1 med kun connection og ikke credentials på login
-
+#Turn and use height
 #Done
 #Rette pick position for robot0 på con1

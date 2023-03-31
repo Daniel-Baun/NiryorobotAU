@@ -1,1 +1,2 @@
-print (2 >= 2)
+s = 2
+print("test {s} test".format(s=s))
