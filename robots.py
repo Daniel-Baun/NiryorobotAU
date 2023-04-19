@@ -11,7 +11,7 @@ from poses import *
 from main import match_table_ref_to_robots
 from settings import * 
 from DB_functions import *
-
+from time_func import *
 
 conveyor_id = ConveyorID.ID_1
 
@@ -89,6 +89,7 @@ class Robot1(RobotLoop):
                 #Robot1 needs to start connected conveyor belt and starts to look after possible pickups        
                 self.client.vision_pick(workspace_storage, z_offset, shape=local_shape,
                                                             color=local_color)
+                write_time_to_csv()
                 print("Robot1 | going over Conveyor ")
                 self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"])
                 print("Robot1 | dropping pawn ")
@@ -144,6 +145,7 @@ class Robot0(RobotLoop):
 
             self.conveyor_lock.release()
             print("unlocked robot0 ", {self.conveyor_lock.locked()})    
+            write_time_to_csv()
             self.client.wait(0.2)
             self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
         #self.client.move_joints(*self.saved_joints_poses["client0_observation_pose"])
