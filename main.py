@@ -29,6 +29,14 @@ def execute_order_66(order: str):
     
     return shape, color
 
+def send_order(order: str, number: str):
+    check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
+    if not(product_avaliable(order, number, cur)):
+        print("Error, no avaliable stock for your order id")
+        
+        change_quantity_product(order, cur, connection)
+        put_queue(cur, connection, order, number)
+
 def while_loop():
     restart = True
     while restart:       
