@@ -15,7 +15,6 @@ from time_func import *
 
 conveyor_id = ConveyorID.ID_1
 
-
 class RobotsMains:
     def __init__(self, robot1, robot0, workspace, saved_joints_poses, DB_conn):
         self.saved_joints_poses = saved_joints_poses
@@ -148,24 +147,7 @@ class Robot0(RobotLoop):
             write_time_to_csv(csvfilename)
             self.client.wait(0.2)
             self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
-        #self.client.move_joints(*self.saved_joints_poses["client0_observation_pose"])
         
-
-        
-        #
-        #while True:
-        #    self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])  # observation
-        #    obj_found, pos, shape, color = self.client.detect_object(workspace_storage, shape=ObjectShape.ANY,
-        #                                                         color=ObjectColor.ANY)
-        #    if obj_found and pos[0] < 0.90:
-        #        self.client.control_conveyor(self.parent.conveyor_id, False, 0, ConveyorDirection.FORWARD)
-        #        self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])  # grab
-        #        self.client.grasp_with_tool()
-        #        self.client.move_joints(*self.saved_joints_poses["client2_intermediate_pos"])
-        #        self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client2"])
-        #        self.client.release_with_tool()
-
-
 # - Initialize positions
 def ask_position():
     joints_pose_dict = {}
@@ -320,62 +302,16 @@ if __name__ == '__main__':
     print("I get here 0")
     main_robot()
 
-
-
-
-    
-## Connect to robot & calibrate
-#robot1 = NiryoRobot(robot1_ip_address)
-#robot0 = NiryoRobot(robot0_ip_address)
-#
-#robot1.set_brightness(brightness_level)
-#robot1.set_contrast(contrast_level)
-#
-#robot1.calibrate_auto()
-#robot0.calibrate_auto()
-## Move joints
-##robot.move_joints(0.0, 0.151, -0.487, 0.047, 0.000, -0.129)
-#robot1.move_joints(position_storage_observer_robot1)
-#robot1.wait(3)
-#print(robot1.get_workspace_list())
-#obj_found, shape_ret, color_ret = robot1.vision_pick('STORAGE_WORKSPACE_NEW',
-#                                                    height_offset=0.0,
-#                                                    shape=ObjectShape.ANY,
-#                                                    color=ObjectColor.ANY)
-#
-#robot1.move_joints(position_over_con1_robot1)
-#robot1.release_with_tool()
-#robot1.grasp_with_tool()
-##start conveyer belt 1
-#conveyor_id_1 = robot1.set_conveyor()
-#robot1.run_conveyor(conveyor_id_1, speed=100, direction=ConveyorDirection.FORWARD)
-#
-#robot1.wait(7.5)
-#robot1.stop_conveyor(conveyor_id_1)
-#
-#robot0.move_joints(position_con1_pickup_robot0)
-#robot0.grasp_with_tool()
-#robot0.execute_registered_trajectory('con1_to_unload')
-#robot0.move_joints(position_unload_robot0)
-#robot0.release_with_tool()
-#robot0.execute_registered_trajectory('unload_to_con1')
-#
-#robot0.move_to_home_pose()
-#robot1.move_to_home_pose()
-## Stop TCP connection
-#robot1.close_connection()
-#robot0.close_connection()
-
-
 #Note to myself
 
 #self.client1.control_conveyor #ændre client1 til parameter
 #best possible vision settings when starting
 #add gracefull killer
 #optimize time to pickup between robots
-#randomize placearea 
 #Add antal orderer, så vi bruger no_product til fetch funktionen
 #add check connetion robotloop1 med kun connection og ikke credentials på login
 #Turn and use height
+
 #Done
 #Rette pick position for robot0 på con1
+#randomize placearea - placearea is now in a 3x3 box
