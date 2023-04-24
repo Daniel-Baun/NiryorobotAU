@@ -80,7 +80,7 @@ class Robot1(RobotLoop):
             data = pop_queue(self.parent.cursor)
             print(data, type(data))
             if not(data == None):
-                self.client.wait(0.5)
+                self.client.wait(0.5) #delay to get database queue
                 local_shape, local_color = match_table_ref_to_robots(data[1])
                 update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "PROCESSING")
                 
@@ -309,9 +309,9 @@ if __name__ == '__main__':
 #add gracefull killer
 #optimize time to pickup between robots
 #Add antal orderer, så vi bruger no_product til fetch funktionen
-#add check connetion robotloop1 med kun connection og ikke credentials på login
-#Turn and use height
+#Turn and use height ?
 
 #Done
 #Rette pick position for robot0 på con1
 #randomize placearea - placearea is now in a 3x3 box
+#add check connetion robotloop1 med kun connection og ikke credentials på login
