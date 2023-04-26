@@ -24,25 +24,30 @@ def publish():
     msg['time']= dt.isoformat()
     
     msg['time']= datetime.now(tz = datetime.now().astimezone().tzinfo).isoformat(timespec='milliseconds')
-    msg['xpos']=0.0
-    msg['ypos']=0.0
-    i = 1
+    msg['timecopy'] = datetime.now(tz = datetime.now().astimezone().tzinfo).isoformat(timespec='milliseconds')
+    #msg['xpos']=0.0
+    #msg['ypos']=0.0
+    #i = 1
     with open(data, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             t = row['time']
-            xpos = float(row['xpos'])
+            timecopy = str(row['timecopy'])
+            #xpos = float(row['xpos'])
             #ypos = float(row['ypos'])
-            msg['xpos']=xpos
-            #msg['ypos']=ypos           
+            #msg['xpos']=xpos
+            #msg['ypos']=ypos     
+            msg['timecopy']=timecopy      
             #msg['seqno']=i
             #i = i +1
 			#dt = dt+ datetime.timedelta(seconds=float(row['step-size']))
 			#msg['time']= dt.isoformat()
             timet = datetime.strptime(t, "%Y-%m-%dT%H:%M:%S.%f%z")
+            timetcopy = datetime.strptime(timecopy, "%Y-%m-%dT%H:%M:%S.%f%z")
             msg['time']= timet.isoformat()
-
+            msg['timecopy']= timetcopy.isoformat()
             msg['time']= datetime.now(tz = datetime.now().astimezone().tzinfo).isoformat(timespec='milliseconds')
+            msg['timecopy']= datetime.now(tz = datetime.now().astimezone().tzinfo).isoformat(timespec='milliseconds')
             print(" [x] Sent %s" % json.dumps(msg))
             channel.basic_publish(exchange='fmi_digital_twin',
 						routing_key='data.to_cosim',

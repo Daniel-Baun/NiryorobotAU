@@ -59,6 +59,13 @@ def pop_queue(cursor):
     cursor.execute(query)
     return cursor.fetchone()
 
+def finished_order(cursor):
+    query = ("SELECT id, desc_item "+
+            "FROM public.orders "+
+            "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING')")
+    cursor.execute(query)
+    return cursor.fetchone()
+
 def update_order_status(cursor, conn, id, status):
     query = ("UPDATE public.orders "+
              "SET status =%s "+ 

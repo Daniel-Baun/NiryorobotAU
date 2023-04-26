@@ -25,9 +25,10 @@ def average_order_time(file_name):
                     timezone_offset = int(re.search(r"[-+]\d{2}:\d{2}$", s).group().replace(":", ""))
                     s = time_string
                     dt = datetime.fromisoformat(s)
-
                     unix_time = int(dt.timestamp())
-                    print(unix_time)                    
+                    print(unix_time)                 
+
+
 if __name__ == '__main__':
     average_order_time(csvfilename)
 
