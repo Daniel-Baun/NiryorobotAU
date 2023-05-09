@@ -94,7 +94,16 @@ def is_order_waiting(cursor):
             "FROM public.orders "+
             "WHERE status = 'WAITING'")
     cursor.execute(query)
-    if cursor.fetchone() == None:
+    if (cursor.rowcount == 0):
+        return False
+    return True
+
+def is_order_processing(cursor):
+    query = ("SELECT status "+
+            "FROM public.orders "+
+            "WHERE status = 'PROCESSING'")
+    cursor.execute(query)
+    if (cursor.rowcount == 0):
         return False
     return True
 

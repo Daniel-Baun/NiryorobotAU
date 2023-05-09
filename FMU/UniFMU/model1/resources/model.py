@@ -1,5 +1,5 @@
 import pickle
-
+import time 
 
 class Model:
     def __init__(self) -> None:
@@ -129,10 +129,20 @@ class Model:
         return Fmi2Status.ok, values
 
     def _update_outputs(self):
-        self.real_c = self.real_a + self.real_b
-        self.integer_c = self.integer_a + self.integer_b
-        self.boolean_c = self.boolean_a or self.boolean_b
-        self.string_c = self.string_a + self.string_b
+        global start_time
+        self.real_c = 0.0
+        if self.boolean_a and 'start_time' not in globals():
+            start_time = time.time()
+        elif not self.boolean_a and 'start_time' in globals():
+            end_time = time.time()
+            duration = end_time - start_time
+            del globals()['start_time']
+            self.real_c = duration
+     
+        #self.real_c = self.real_a + self.real_b
+        #self.integer_c = self.integer_a + self.integer_b
+        #self.boolean_c = self.boolean_a or self.boolean_b
+        #self.string_c = self.string_a + self.string_b
 
 
 class Fmi2Status:
@@ -165,28 +175,27 @@ if __name__ == "__main__":
     assert m.real_a == 0.0
     assert m.real_b == 0.0
     assert m.real_c == 0.0
-    assert m.integer_a == 0
-    assert m.integer_b == 0
-    assert m.integer_c == 0
+    #assert m.integer_a == 0
+    #assert m.integer_b == 0
+    #assert m.integer_c == 0
     assert m.boolean_a == False
     assert m.boolean_b == False
-    assert m.boolean_c == False
-    assert m.string_a == ""
-    assert m.string_b == ""
-    assert m.string_c == ""
-
-    m.real_a = 1.0
-    m.real_b = 2.0
-    m.integer_a = 1
-    m.integer_b = 2
+    #assert m.boolean_c == False
+    #assert m.string_a == ""
+    #assert m.string_b == ""
+    #assert m.string_c == ""
+    #m.integer_a = 1
+    #m.integer_b = 2
     m.boolean_a = True
-    m.boolean_b = False
-    m.string_a = "Hello "
-    m.string_b = "World!"
+    #m.boolean_b = False
+    #m.string_a = "Hello "
+    #m.string_b = "World!"
 
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
-
-    assert m.real_c == 3.0
-    assert m.integer_c == 3
-    assert m.boolean_c == True
-    assert m.string_c == "Hello World!"
+    m.boolean_a = False
+    assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    assert m.real_c != 0.0
+    #print(m.real_c)
+    #assert m.integer_c == 3
+    #assert m.boolean_c == True
+    #assert m.string_c == "Hello World!"

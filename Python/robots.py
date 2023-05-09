@@ -78,36 +78,38 @@ class Robot1(RobotLoop):
         self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
         while True:
             self.client.wait(0.2)
-            data = pop_queue(self.parent.cursor)
-            print(data, type(data))
-            if not(data == None):
-                self.client.wait(0.5) #delay to get database queue
-                local_shape, local_color = match_table_ref_to_robots(data[1])
-                update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "PROCESSING")
-                
+            if (is_order_waiting(self.parent.cursor)):
+                data = pop_queue(self.parent.cursor)
+                print(data)
+                print(data, type(data))
+                if not(data == None):
+                    self.client.wait(0.5) #delay to get database queue
+                    local_shape, local_color = match_table_ref_to_robots(data[1])
+                    update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "PROCESSING")
 
-                #Robot1 needs to start connected conveyor belt and starts to look after possible pickups        
-                self.client.vision_pick(workspace_storage, z_offset, shape=local_shape,
-                                                            color=local_color)
-                write_time_to_csv(csvfilename)
-                print("Robot1 | going over Conveyor ")
-                self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"])
-                print("Robot1 | dropping pawn ")
-                self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client1"])  # drop
-                self.client.release_with_tool()
-                print("locked robot1 ", {self.conveyor_lock.locked()})    
-                self.conveyor_lock.acquire() # locks use of conveyorbelt for others
-                print("is locked robot1 ", {self.conveyor_lock.locked()})
 
-                self.parent.conveyor_controller(100) # start conveyor belt
+                    #Robot1 needs to start connected conveyor belt and starts to look after possible pickups        
+                    self.client.vision_pick(workspace_storage, z_offset, shape=local_shape,
+                                                                color=local_color)
+                    write_time_to_csv(csvfilename)
+                    print("Robot1 | going over Conveyor ")
+                    self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"])
+                    print("Robot1 | dropping pawn ")
+                    self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client1"])  # drop
+                    self.client.release_with_tool()
+                    print("locked robot1 ", {self.conveyor_lock.locked()})    
+                    self.conveyor_lock.acquire() # locks use of conveyorbelt for others
+                    print("is locked robot1 ", {self.conveyor_lock.locked()})
 
-                self.conveyor_lock.release() # unlocks use of conveyor for others
-                print("unlocked robot1 ", {self.conveyor_lock.locked()})
-                self.client.wait(10)    
-                self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
+                    self.parent.conveyor_controller(100) # start conveyor belt
 
-                self.client.wait(0.2)
-            self.client.wait(1)
+                    self.conveyor_lock.release() # unlocks use of conveyor for others
+                    print("unlocked robot1 ", {self.conveyor_lock.locked()})
+                    self.client.wait(10)    
+                    self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
+
+                    self.client.wait(0.2)
+                self.client.wait(1)
 
 class Robot0(RobotLoop):
     def __init__(self, client, parent):
@@ -129,29 +131,30 @@ class Robot0(RobotLoop):
         self.client.release_with_tool()
         sensor_pin_id = PinID.DI5
         while True:
-            data = finished_order(self.parent.cursor)
-            if not(data == None):
-                while self.client.digital_read(sensor_pin_id) == PinState.HIGH:
-                    self.client.wait(0.2)
-                self.client.wait(0.8)
-                print("Counter is: ", self.placement_counter)
-                print("locked robot0 ", {self.conveyor_lock.locked()})    
-                self.conveyor_lock.acquire()
-                print("is locked robot0 ", {self.conveyor_lock.locked()})
-                self.parent.conveyor_controller(0)
-                self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])
-                self.client.grasp_with_tool()
-                self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
-                self.modulo_place_pos()
-                self.client.release_with_tool()
+            if (is_order_processing(self.parent.cursor)):
+                data = finished_order(self.parent.cursor)
+                if not(data == None):
+                    while self.client.digital_read(sensor_pin_id) == PinState.HIGH:
+                        self.client.wait(0.2)
+                    self.client.wait(0.8)
+                    print("Counter is: ", self.placement_counter)
+                    print("locked robot0 ", {self.conveyor_lock.locked()})    
+                    self.conveyor_lock.acquire()
+                    print("is locked robot0 ", {self.conveyor_lock.locked()})
+                    self.parent.conveyor_controller(0)
+                    self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])
+                    self.client.grasp_with_tool()
+                    self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
+                    self.modulo_place_pos()
+                    self.client.release_with_tool()
 
-                self.conveyor_lock.release()
-                print("unlocked robot0 ", {self.conveyor_lock.locked()})    
-                write_time_to_csv(csvfilename)
-                print(data, type(data))
-                update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "DONE")
-                self.client.wait(0.2)
-                self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
+                    self.conveyor_lock.release()
+                    print("unlocked robot0 ", {self.conveyor_lock.locked()})    
+                    write_time_to_csv(csvfilename)
+                    print(data, type(data))
+                    update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "DONE")
+                    self.client.wait(0.2)
+                    self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
         
 # - Initialize positions
 def ask_position():
