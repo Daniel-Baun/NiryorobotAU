@@ -1,0 +1,696 @@
+simulation 
+import BooleanLogic;
+import DataWriter;
+import DataWriterConfig;
+import FMI2;
+import FMI2Component;
+import Logger;
+import Math;
+import SimulationControl;
+{
+ 	int status = 0;
+	Math math = null;
+	Logger logger = null;
+	DataWriter dataWriter = null;
+	BooleanLogic booleanLogic = null;
+	@mapFmu(RabbitMQFMU -> "{RabbitMQFMU}");
+	FMI2 RabbitMQFMU = null;
+	@mapFmu(Digi_shadow -> "{Digi_shadow}");
+	FMI2 Digi_shadow = null;
+	@mapInstance(RabbitMQFMU_1 -> "RabbitMQFMU");
+	FMI2Component RabbitMQFMU_1 = null;
+	@mapInstance(Digi_shadow_1 -> "Digi_shadow");
+	FMI2Component Digi_shadow_1 = null;
+	try 
+	{
+		math = load("Math");
+		if( ((math == null)) )
+		{
+				error "math IS NULL ";
+		}
+		logger = load("Logger");
+		if( ((logger == null)) )
+		{
+				error "logger IS NULL ";
+		}
+		dataWriter = load("DataWriter");
+		if( ((dataWriter == null)) )
+		{
+				error "dataWriter IS NULL ";
+		}
+		booleanLogic = load("BooleanLogic");
+		if( ((booleanLogic == null)) )
+		{
+				error "booleanLogic IS NULL ";
+		}
+		RabbitMQFMU = load("FMI2", "{cfc65592-ffff-4563-9705-1581b6e7071c}", "file:/home/au682915/Bachelor/Code/FMU/RabbitMQFMU/rmqfmuv2.1.5/rabbitfmu_wait.fmu");
+		if( ((RabbitMQFMU == null)) )
+		{
+				error "RabbitMQFMU IS NULL ";
+		}
+		Digi_shadow = load("FMI2", "77236337-210e-4e9c-8f2c-c1a0677db21b", "file:/home/au682915/Bachelor/Code/FMU/UniFMU/model1.fmu");
+		if( ((Digi_shadow == null)) )
+		{
+				error "Digi_shadow IS NULL ";
+		}
+		RabbitMQFMU_1 = RabbitMQFMU.instantiate("RabbitMQFMU", false, false);
+		if( ((RabbitMQFMU_1 == null)) )
+		{
+				error "RabbitMQFMU_1 IS NULL ";
+		}
+		Digi_shadow_1 = Digi_shadow.instantiate("Digi_shadow", false, false);
+		if( ((Digi_shadow_1 == null)) )
+		{
+				error "Digi_shadow_1 IS NULL ";
+		}
+		real STEP_SIZE = 0.1;
+		real START_TIME = 0.0;
+		real END_TIME = 100.0;
+		int FMI_OK = 0;
+		int FMI_DISCARD = 2;
+		int FMI_ERROR = 3;
+		int FMI_FATAL = 4;
+		BooleanLogic booleanLogic1;
+		try 
+		{
+			booleanLogic1 = load("BooleanLogic");
+			if( (booleanLogic1 == null) )
+			{
+					error "Failed load of: booleanLogic1";
+			}
+			bool digi_shadow_1BoolIo[2];
+			uint digi_shadow_1UintVref[2];
+			real rabbitmqfmu_1RealShare[1];
+			real rabbitmqfmu_1RealIo[16];
+			bool rabbitmqfmu_1BoolIo[16];
+			int rabbitmqfmu_1IntIo[16];
+			string rabbitmqfmu_1StringIo[16];
+			uint rabbitmqfmu_1UintVref[16];
+			real fixed_end_time = 0.0;
+			fixed_end_time = END_TIME;
+			status = RabbitMQFMU_1.setupExperiment(true, 0.1, START_TIME, true, END_TIME);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetupExperiment failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetupExperiment failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setupExperiment' on 'RabbitMQFMU_1'";
+			}
+			status = Digi_shadow_1.setupExperiment(true, 0.1, START_TIME, true, END_TIME);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetupExperiment failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetupExperiment failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+					}
+					error "Failed to 'setupExperiment' on 'Digi_shadow_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 0;
+			rabbitmqfmu_1StringIo[0] = "localhost";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 1;
+			rabbitmqfmu_1IntIo[0] = 5672;
+			status = RabbitMQFMU_1.setInteger(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1IntIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setInteger' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 2;
+			rabbitmqfmu_1StringIo[0] = "guest";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 3;
+			rabbitmqfmu_1StringIo[0] = "guest";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 4;
+			rabbitmqfmu_1StringIo[0] = "data.to_cosim";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 5;
+			rabbitmqfmu_1IntIo[0] = 60;
+			status = RabbitMQFMU_1.setInteger(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1IntIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setInteger' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 6;
+			rabbitmqfmu_1IntIo[0] = 10;
+			status = RabbitMQFMU_1.setInteger(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1IntIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setInteger' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 7;
+			rabbitmqfmu_1IntIo[0] = 150;
+			status = RabbitMQFMU_1.setInteger(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1IntIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setInteger' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 8;
+			rabbitmqfmu_1IntIo[0] = 1;
+			status = RabbitMQFMU_1.setInteger(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1IntIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetInteger failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setInteger' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 9;
+			rabbitmqfmu_1StringIo[0] = "fmi_digital_twin";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 10;
+			rabbitmqfmu_1StringIo[0] = "direct";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 11;
+			rabbitmqfmu_1StringIo[0] = "fmi_digital_twin_sh";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 12;
+			rabbitmqfmu_1StringIo[0] = "direct";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 13;
+			rabbitmqfmu_1StringIo[0] = "data.from_cosim";
+			status = RabbitMQFMU_1.setString(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1StringIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetString failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setString' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 16;
+			rabbitmqfmu_1BoolIo[0] = false;
+			status = RabbitMQFMU_1.setBoolean(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1BoolIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetBoolean failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetBoolean failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'setBoolean' on 'RabbitMQFMU_1'";
+			}
+			status = RabbitMQFMU_1.enterInitializationMode();
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "EnterInitializationMode failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "EnterInitializationMode failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'enterInitializationMode' on 'RabbitMQFMU_1'";
+			}
+			status = Digi_shadow_1.enterInitializationMode();
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "EnterInitializationMode failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "EnterInitializationMode failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+					}
+					error "Failed to 'enterInitializationMode' on 'Digi_shadow_1'";
+			}
+			rabbitmqfmu_1UintVref[0] = 20;
+			status = RabbitMQFMU_1.getReal(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1RealIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'getReal' on 'RabbitMQFMU_1'";
+			}
+			rabbitmqfmu_1RealShare[0] = rabbitmqfmu_1RealIo[0];
+			digi_shadow_1UintVref[0] = 1;
+			digi_shadow_1BoolIo[0] = rabbitmqfmu_1RealShare[0] == 1;
+			status = Digi_shadow_1.setBoolean(digi_shadow_1UintVref, 1, digi_shadow_1BoolIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "SetBoolean failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "SetBoolean failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+					}
+					error "Failed to 'setBoolean' on 'Digi_shadow_1'";
+			}
+			status = RabbitMQFMU_1.exitInitializationMode();
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "ExitInitializationMode failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "ExitInitializationMode failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'exitInitializationMode' on 'RabbitMQFMU_1'";
+			}
+			status = Digi_shadow_1.exitInitializationMode();
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "ExitInitializationMode failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "ExitInitializationMode failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+					}
+					error "Failed to 'exitInitializationMode' on 'Digi_shadow_1'";
+			}
+		}		finally 
+		{
+			if( (booleanLogic1 != null) )
+			{
+					unload(booleanLogic1);
+					booleanLogic1 = null;
+			}
+		}
+		BooleanLogic booleanLogic2;
+		DataWriter dataWriter1;
+		SimulationControl simulationControl;
+		try 
+		{
+			simulationControl = load("SimulationControl");
+			if( (simulationControl == null) )
+			{
+					error "Failed load of: simulationControl";
+			}
+			dataWriter1 = load("DataWriter");
+			if( (dataWriter1 == null) )
+			{
+					error "Failed load of: dataWriter1";
+			}
+			booleanLogic2 = load("BooleanLogic");
+			if( (booleanLogic2 == null) )
+			{
+					error "Failed load of: booleanLogic2";
+			}
+			bool digi_shadow_1CurrentTimeFullStep = true;
+			real digi_shadow_1CurrentTime = 0.0;
+			bool rabbitmqfmu_1CurrentTimeFullStep = true;
+			real rabbitmqfmu_1CurrentTime = 0.0;
+			bool digi_shadow_1BoolIo[2];
+			real digi_shadow_1RealShare[1];
+			real rabbitmqfmu_1RealShare[1];
+			real digi_shadow_1RealIo[2];
+			uint digi_shadow_1UintVref[2];
+			real rabbitmqfmu_1RealIo[16];
+			uint rabbitmqfmu_1UintVref[16];
+			real jac_current_step_size = 0.0;
+			real jac_step_size = 0.0;
+			@TransferAs("START_TIME");
+			real jac_current_communication_point = 0.0;
+			real jac_end_time = 0.0;
+			jac_current_step_size = STEP_SIZE;
+			jac_step_size = STEP_SIZE;
+			jac_current_communication_point = START_TIME;
+			jac_end_time = END_TIME;
+			string datawriter_headers[2] = { "{RabbitMQFMU}.RabbitMQFMU.waiting" , "{Digi_shadow}.Digi_shadow.real_c" };
+			DataWriterConfig datawriter_configuration = dataWriter1.writeHeader(datawriter_headers);
+			rabbitmqfmu_1UintVref[0] = 20;
+			status = RabbitMQFMU_1.getReal(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1RealIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+					}
+					error "Failed to 'getReal' on 'RabbitMQFMU_1'";
+			}
+			digi_shadow_1UintVref[0] = 0;
+			status = Digi_shadow_1.getReal(digi_shadow_1UintVref, 1, digi_shadow_1RealIo);
+			if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+			{
+					if( (status == FMI_ERROR) )
+					{
+							logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+					}
+					if( (status == FMI_FATAL) )
+					{
+							logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+					}
+					error "Failed to 'getReal' on 'Digi_shadow_1'";
+			}
+			rabbitmqfmu_1RealShare[0] = rabbitmqfmu_1RealIo[0];
+			digi_shadow_1RealShare[0] = digi_shadow_1RealIo[0];
+			real fmu_communicationpoints[2];
+			dataWriter1.writeDataPoint(datawriter_configuration, jac_current_communication_point, rabbitmqfmu_1RealShare[0], digi_shadow_1RealShare[0]);
+			bool any_discards = false;
+			while( ((jac_current_communication_point + jac_current_step_size) < jac_end_time) )
+			{
+				bool tmp = simulationControl.stopRequested();
+				if( (tmp) )
+				{
+						error "Simulation stopped by user";
+				}
+				@Transfer();
+				digi_shadow_1UintVref[0] = 1;
+				digi_shadow_1BoolIo[0] = rabbitmqfmu_1RealShare[0] == 1;
+				status = Digi_shadow_1.setBoolean(digi_shadow_1UintVref, 1, digi_shadow_1BoolIo);
+				if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+				{
+						if( (status == FMI_ERROR) )
+						{
+								logger.log(4, "SetBoolean failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+						}
+						if( (status == FMI_FATAL) )
+						{
+								logger.log(4, "SetBoolean failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+						}
+						error "Failed to 'setBoolean' on 'Digi_shadow_1'";
+				}
+				any_discards = false;
+				status = RabbitMQFMU_1.doStep(jac_current_communication_point, jac_current_step_size, false);
+				if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+				{
+						if( (status == FMI_ERROR) )
+						{
+								logger.log(4, "DoStep failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+						}
+						if( (status == FMI_FATAL) )
+						{
+								logger.log(4, "DoStep failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+						}
+						error "Failed to 'doStep' on 'RabbitMQFMU_1'";
+				}
+				if( (status != FMI_OK) )
+				{
+						if( (status == FMI_DISCARD) )
+						{
+								status = RabbitMQFMU_1.getRealStatus(2, ref rabbitmqfmu_1CurrentTime);
+								rabbitmqfmu_1CurrentTimeFullStep = false;
+						}
+				}
+				else
+				{
+						rabbitmqfmu_1CurrentTime = jac_current_communication_point + jac_current_step_size;
+						rabbitmqfmu_1CurrentTimeFullStep = true;
+				}
+				fmu_communicationpoints[0] = rabbitmqfmu_1CurrentTime;
+				if( (!rabbitmqfmu_1CurrentTimeFullStep) )
+				{
+						logger.log(1, "## FMU: '%s' DISCARDED step at sim-time: %f for step-size: %f and proposed sim-time: %.15f", "RabbitMQFMU_1", jac_current_communication_point, jac_current_step_size, rabbitmqfmu_1CurrentTime);
+						any_discards = any_discards || !rabbitmqfmu_1CurrentTimeFullStep;
+				}
+				status = Digi_shadow_1.doStep(jac_current_communication_point, jac_current_step_size, false);
+				if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+				{
+						if( (status == FMI_ERROR) )
+						{
+								logger.log(4, "DoStep failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+						}
+						if( (status == FMI_FATAL) )
+						{
+								logger.log(4, "DoStep failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+						}
+						error "Failed to 'doStep' on 'Digi_shadow_1'";
+				}
+				if( (status != FMI_OK) )
+				{
+						if( (status == FMI_DISCARD) )
+						{
+								status = Digi_shadow_1.getRealStatus(2, ref digi_shadow_1CurrentTime);
+								digi_shadow_1CurrentTimeFullStep = false;
+						}
+				}
+				else
+				{
+						digi_shadow_1CurrentTime = jac_current_communication_point + jac_current_step_size;
+						digi_shadow_1CurrentTimeFullStep = true;
+				}
+				fmu_communicationpoints[1] = digi_shadow_1CurrentTime;
+				if( (!digi_shadow_1CurrentTimeFullStep) )
+				{
+						logger.log(1, "## FMU: '%s' DISCARDED step at sim-time: %f for step-size: %f and proposed sim-time: %.15f", "Digi_shadow_1", jac_current_communication_point, jac_current_step_size, digi_shadow_1CurrentTime);
+						any_discards = any_discards || !digi_shadow_1CurrentTimeFullStep;
+				}
+				rabbitmqfmu_1UintVref[0] = 20;
+				status = RabbitMQFMU_1.getReal(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1RealIo);
+				if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+				{
+						if( (status == FMI_ERROR) )
+						{
+								logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+						}
+						if( (status == FMI_FATAL) )
+						{
+								logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+						}
+						error "Failed to 'getReal' on 'RabbitMQFMU_1'";
+				}
+				digi_shadow_1UintVref[0] = 0;
+				status = Digi_shadow_1.getReal(digi_shadow_1UintVref, 1, digi_shadow_1RealIo);
+				if( ((status == FMI_ERROR) || (status == FMI_FATAL)) )
+				{
+						if( (status == FMI_ERROR) )
+						{
+								logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", Digi_shadow_1);
+						}
+						if( (status == FMI_FATAL) )
+						{
+								logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", Digi_shadow_1);
+						}
+						error "Failed to 'getReal' on 'Digi_shadow_1'";
+				}
+				rabbitmqfmu_1RealShare[0] = rabbitmqfmu_1RealIo[0];
+				digi_shadow_1RealShare[0] = digi_shadow_1RealIo[0];
+				if( (!any_discards) )
+				{
+						jac_current_communication_point = jac_current_communication_point + jac_current_step_size;
+						dataWriter1.writeDataPoint(datawriter_configuration, jac_current_communication_point, rabbitmqfmu_1RealShare[0], digi_shadow_1RealShare[0]);
+						jac_current_step_size = jac_step_size;
+				}
+			}
+			dataWriter1.close();
+		}		finally 
+		{
+			if( (simulationControl != null) )
+			{
+					unload(simulationControl);
+					simulationControl = null;
+			}
+			if( (dataWriter1 != null) )
+			{
+					unload(dataWriter1);
+					dataWriter1 = null;
+			}
+			if( (booleanLogic2 != null) )
+			{
+					unload(booleanLogic2);
+					booleanLogic2 = null;
+			}
+		}
+		RabbitMQFMU_1.terminate();
+		Digi_shadow_1.terminate();
+	}	finally 
+	{
+		if( ((RabbitMQFMU_1 != null)) )
+		{
+				RabbitMQFMU.freeInstance(RabbitMQFMU_1);
+				RabbitMQFMU_1 = null;
+		}
+		if( ((Digi_shadow_1 != null)) )
+		{
+				Digi_shadow.freeInstance(Digi_shadow_1);
+				Digi_shadow_1 = null;
+		}
+		if( ((RabbitMQFMU != null)) )
+		{
+				unload(RabbitMQFMU);
+				RabbitMQFMU = null;
+		}
+		if( ((Digi_shadow != null)) )
+		{
+				unload(Digi_shadow);
+				Digi_shadow = null;
+		}
+		if( ((math != null)) )
+		{
+				unload(math);
+				math = null;
+		}
+		if( ((logger != null)) )
+		{
+				unload(logger);
+				logger = null;
+		}
+		if( ((dataWriter != null)) )
+		{
+				unload(dataWriter);
+				dataWriter = null;
+		}
+		if( ((booleanLogic != null)) )
+		{
+				unload(booleanLogic);
+				booleanLogic = null;
+		}
+	}
+}

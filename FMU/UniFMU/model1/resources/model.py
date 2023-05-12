@@ -3,28 +3,12 @@ import time
 
 class Model:
     def __init__(self) -> None:
-        self.real_a = 0.0
-        self.real_b = 0.0
-        self.integer_a = 0
-        self.integer_b = 0
         self.boolean_a = False
-        self.boolean_b = False
-        self.string_a = ""
-        self.string_b = ""
+
 
         self.reference_to_attribute = {
-            0: "real_a",
-            1: "real_b",
-            2: "real_c",
-            3: "integer_a",
-            4: "integer_b",
-            5: "integer_c",
-            6: "boolean_a",
-            7: "boolean_b",
-            8: "boolean_c",
-            9: "string_a",
-            10: "string_b",
-            11: "string_c",
+            0: "real_c",
+            1: "boolean_a",
         }
 
         self._update_outputs()
@@ -77,37 +61,16 @@ class Model:
 
         bytes = pickle.dumps(
             (
-                self.real_a,
-                self.real_b,
-                self.integer_a,
-                self.integer_b,
                 self.boolean_a,
-                self.boolean_b,
-                self.string_a,
-                self.string_b,
             )
         )
         return Fmi2Status.ok, bytes
 
     def fmi2ExtDeserialize(self, bytes) -> int:
         (
-            real_a,
-            real_b,
-            integer_a,
-            integer_b,
             boolean_a,
-            boolean_b,
-            string_a,
-            string_b,
         ) = pickle.loads(bytes)
-        self.real_a = real_a
-        self.real_b = real_b
-        self.integer_a = integer_a
-        self.integer_b = integer_b
         self.boolean_a = boolean_a
-        self.boolean_b = boolean_b
-        self.string_a = string_a
-        self.string_b = string_b
         self._update_outputs()
 
         return Fmi2Status.ok
@@ -133,11 +96,14 @@ class Model:
         self.real_c = 0.0
         if self.boolean_a and 'start_time' not in globals():
             start_time = time.time()
+            print("I am in if statement")
         elif not self.boolean_a and 'start_time' in globals():
+            print("I am in elif statement")
             end_time = time.time()
             duration = end_time - start_time
             del globals()['start_time']
             self.real_c = duration
+            
      
         #self.real_c = self.real_a + self.real_b
         #self.integer_c = self.integer_a + self.integer_b
@@ -171,31 +137,12 @@ class Fmi2Status:
 
 if __name__ == "__main__":
     m = Model()
-
-    assert m.real_a == 0.0
-    assert m.real_b == 0.0
     assert m.real_c == 0.0
-    #assert m.integer_a == 0
-    #assert m.integer_b == 0
-    #assert m.integer_c == 0
     assert m.boolean_a == False
-    assert m.boolean_b == False
-    #assert m.boolean_c == False
-    #assert m.string_a == ""
-    #assert m.string_b == ""
-    #assert m.string_c == ""
-    #m.integer_a = 1
-    #m.integer_b = 2
+    
     m.boolean_a = True
-    #m.boolean_b = False
-    #m.string_a = "Hello "
-    #m.string_b = "World!"
-
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     m.boolean_a = False
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     assert m.real_c != 0.0
-    #print(m.real_c)
-    #assert m.integer_c == 3
-    #assert m.boolean_c == True
-    #assert m.string_c == "Hello World!"
+    print(m.real_c)

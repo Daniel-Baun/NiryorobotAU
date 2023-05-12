@@ -1,0 +1,98 @@
+2023-05-12T13:14:49,337 INFO  - logAll OK RabbitMQFMU 'config.communicationtimeout config.communicationtimeout 5 60 1'
+2023-05-12T13:14:49,339 INFO  - logAll OK RabbitMQFMU 'config.exchangename config.exchangename 9 fmi_digital_twin 1'
+2023-05-12T13:14:49,339 INFO  - logAll OK RabbitMQFMU 'config.exchangetype config.exchangetype 10 direct 1'
+2023-05-12T13:14:49,340 INFO  - logAll OK RabbitMQFMU 'config.healthdata.exchangename config.healthdata.exchangename 11 fmi_digital_twin_sh 1'
+2023-05-12T13:14:49,341 INFO  - logAll OK RabbitMQFMU 'config.healthdata.exchangetype config.healthdata.exchangetype 12 direct 1'
+2023-05-12T13:14:49,343 INFO  - logAll OK RabbitMQFMU 'config.hostname config.hostname 0 localhost 1'
+2023-05-12T13:14:49,346 INFO  - logAll OK RabbitMQFMU 'config.lookahead config.lookahead 8 1 1'
+2023-05-12T13:14:49,346 INFO  - logAll OK RabbitMQFMU 'config.maxage config.maxage 7 150 1'
+2023-05-12T13:14:49,347 INFO  - logAll OK RabbitMQFMU 'config.password config.password 3 guest 1'
+2023-05-12T13:14:49,347 INFO  - logAll OK RabbitMQFMU 'config.port config.port 1 5672 1'
+2023-05-12T13:14:49,348 INFO  - logAll OK RabbitMQFMU 'config.precision config.precision 6 10 1'
+2023-05-12T13:14:49,348 INFO  - logAll OK RabbitMQFMU 'config.routingkey config.routingkey 4 data.to_cosim 1'
+2023-05-12T13:14:49,349 INFO  - logAll OK RabbitMQFMU 'config.routingkey.from_cosim config.routingkey.from_cosim 13 data.from_cosim 1'
+2023-05-12T13:14:49,349 INFO  - logAll OK RabbitMQFMU 'config.ssl config.ssl 16 0 1'
+2023-05-12T13:14:49,350 INFO  - logAll OK RabbitMQFMU 'config.username config.username 2 guest 1'
+2023-05-12T13:14:49,350 INFO  - logAll OK RabbitMQFMU 'waiting waiting 20 0.000000 1'
+2023-05-12T13:14:49,356 INFO  - logAll OK RabbitMQFMU Using Tool:  'RabbitMQ digital twin generator v2.1.3-98-g9a0430c'
+2023-05-12T13:14:49,356 WARN  - logWarn Warning RabbitMQFMU The seqno output is NOT present with. 
+2023-05-12T13:14:49,357 WARN  - logWarn Warning RabbitMQFMU The enable send input is NOT present with. 
+2023-05-12T13:14:49,683 INFO  - logAll OK RabbitMQFMU Setting string ref 0 = localhost
+2023-05-12T13:14:49,685 INFO  - logAll OK RabbitMQFMU Setting integer ref 1 = 5672
+2023-05-12T13:14:49,686 INFO  - logAll OK RabbitMQFMU Setting string ref 2 = guest
+2023-05-12T13:14:49,686 INFO  - logAll OK RabbitMQFMU Setting string ref 3 = guest
+2023-05-12T13:14:49,687 INFO  - logAll OK RabbitMQFMU Setting string ref 4 = data.to_cosim
+2023-05-12T13:14:49,687 INFO  - logAll OK RabbitMQFMU Setting integer ref 5 = 60
+2023-05-12T13:14:49,687 INFO  - logAll OK RabbitMQFMU Setting integer ref 6 = 10
+2023-05-12T13:14:49,688 INFO  - logAll OK RabbitMQFMU Setting integer ref 7 = 150
+2023-05-12T13:14:49,688 INFO  - logAll OK RabbitMQFMU Setting integer ref 8 = 1
+2023-05-12T13:14:49,689 INFO  - logAll OK RabbitMQFMU Setting string ref 9 = fmi_digital_twin
+2023-05-12T13:14:49,689 INFO  - logAll OK RabbitMQFMU Setting string ref 10 = direct
+2023-05-12T13:14:49,689 INFO  - logAll OK RabbitMQFMU Setting string ref 11 = fmi_digital_twin_sh
+2023-05-12T13:14:49,690 INFO  - logAll OK RabbitMQFMU Setting string ref 12 = direct
+2023-05-12T13:14:49,690 INFO  - logAll OK RabbitMQFMU Setting string ref 13 = data.from_cosim
+2023-05-12T13:14:49,695 INFO  - logAll OK RabbitMQFMU Setting boolean ref 16 = 0
+2023-05-12T13:14:49,695 INFO  - logAll OK RabbitMQFMU Preparing initialization. Looking Up configuration parameters
+2023-05-12T13:14:49,695 INFO  - logAll OK RabbitMQFMU Preparing initialization. Hostname='localhost', Port='5672', Username='guest', routingkey='data.to_cosim', communication timeout 60 s, precision 10000000000 (10), SSL 0
+2023-05-12T13:14:49,730 INFO  - logAll OK RabbitMQFMU Sending RabbitMQ ready message
+2023-05-12T13:14:50,515 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:50.510', '{"time": "2023-05-12T13:14:50.510+02:00", "waiting": false}'
+2023-05-12T13:14:51,521 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:51.517', '{"time": "2023-05-12T13:14:51.517+02:00", "waiting": false}'
+2023-05-12T13:14:52,523 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:52.520', '{"time": "2023-05-12T13:14:52.520+02:00", "waiting": false}'
+2023-05-12T13:14:53,527 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:53.522', '{"time": "2023-05-12T13:14:53.522+02:00", "waiting": false}'
+2023-05-12T13:14:54,530 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:54.526', '{"time": "2023-05-12T13:14:54.526+02:00", "waiting": false}'
+2023-05-12T13:14:55,532 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:55.529', '{"time": "2023-05-12T13:14:55.529+02:00", "waiting": false}'
+2023-05-12T13:14:56,534 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:56.532', '{"time": "2023-05-12T13:14:56.532+02:00", "waiting": false}'
+2023-05-12T13:14:57,536 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:57.534', '{"time": "2023-05-12T13:14:57.534+02:00", "waiting": false}'
+2023-05-12T13:14:58,540 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:58.538', '{"time": "2023-05-12T13:14:58.538+02:00", "waiting": false}'
+2023-05-12T13:14:59,545 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:14:59.542', '{"time": "2023-05-12T13:14:59.542+02:00", "waiting": false}'
+2023-05-12T13:15:00,549 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:00.545', '{"time": "2023-05-12T13:15:00.545+02:00", "waiting": false}'
+2023-05-12T13:15:01,549 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:01.547', '{"time": "2023-05-12T13:15:01.547+02:00", "waiting": false}'
+2023-05-12T13:15:02,554 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:02.549', '{"time": "2023-05-12T13:15:02.549+02:00", "waiting": false}'
+2023-05-12T13:15:03,555 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:03.553', '{"time": "2023-05-12T13:15:03.553+02:00", "waiting": false}'
+2023-05-12T13:15:04,561 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:04.557', '{"time": "2023-05-12T13:15:04.557+02:00", "waiting": false}'
+2023-05-12T13:15:05,561 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:05.559', '{"time": "2023-05-12T13:15:05.559+02:00", "waiting": false}'
+2023-05-12T13:15:06,563 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:06.561', '{"time": "2023-05-12T13:15:06.561+02:00", "waiting": false}'
+2023-05-12T13:15:07,569 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:07.564', '{"time": "2023-05-12T13:15:07.564+02:00", "waiting": true}'
+2023-05-12T13:15:08,575 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:08.570', '{"time": "2023-05-12T13:15:08.570+02:00", "waiting": true}'
+2023-05-12T13:15:09,574 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:09.573', '{"time": "2023-05-12T13:15:09.573+02:00", "waiting": true}'
+2023-05-12T13:15:10,581 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:10.575', '{"time": "2023-05-12T13:15:10.575+02:00", "waiting": true}'
+2023-05-12T13:15:11,587 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:11.583', '{"time": "2023-05-12T13:15:11.583+02:00", "waiting": true}'
+2023-05-12T13:15:12,588 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:12.586', '{"time": "2023-05-12T13:15:12.586+02:00", "waiting": true}'
+2023-05-12T13:15:13,593 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:13.589', '{"time": "2023-05-12T13:15:13.589+02:00", "waiting": true}'
+2023-05-12T13:15:14,596 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:14.592', '{"time": "2023-05-12T13:15:14.592+02:00", "waiting": true}'
+2023-05-12T13:15:15,608 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:15.596', '{"time": "2023-05-12T13:15:15.596+02:00", "waiting": true}'
+2023-05-12T13:15:16,611 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:16.605', '{"time": "2023-05-12T13:15:16.605+02:00", "waiting": true}'
+2023-05-12T13:15:17,614 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:17.609', '{"time": "2023-05-12T13:15:17.609+02:00", "waiting": false}'
+2023-05-12T13:15:18,621 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:18.616', '{"time": "2023-05-12T13:15:18.616+02:00", "waiting": false}'
+2023-05-12T13:15:19,628 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:19.623', '{"time": "2023-05-12T13:15:19.623+02:00", "waiting": false}'
+2023-05-12T13:15:20,633 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:20.629', '{"time": "2023-05-12T13:15:20.629+02:00", "waiting": false}'
+2023-05-12T13:15:21,638 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:21.633', '{"time": "2023-05-12T13:15:21.633+02:00", "waiting": false}'
+2023-05-12T13:15:22,642 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:22.638', '{"time": "2023-05-12T13:15:22.638+02:00", "waiting": false}'
+2023-05-12T13:15:23,647 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:23.641', '{"time": "2023-05-12T13:15:23.641+02:00", "waiting": false}'
+2023-05-12T13:15:24,646 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:24.644', '{"time": "2023-05-12T13:15:24.644+02:00", "waiting": false}'
+2023-05-12T13:15:25,648 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:25.646', '{"time": "2023-05-12T13:15:25.646+02:00", "waiting": false}'
+2023-05-12T13:15:26,653 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:26.649', '{"time": "2023-05-12T13:15:26.649+02:00", "waiting": false}'
+2023-05-12T13:15:27,655 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:27.652', '{"time": "2023-05-12T13:15:27.652+02:00", "waiting": false}'
+2023-05-12T13:15:28,661 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:28.657', '{"time": "2023-05-12T13:15:28.657+02:00", "waiting": false}'
+2023-05-12T13:15:29,664 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:29.660', '{"time": "2023-05-12T13:15:29.660+02:00", "waiting": false}'
+2023-05-12T13:15:30,670 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:30.666', '{"time": "2023-05-12T13:15:30.666+02:00", "waiting": false}'
+2023-05-12T13:15:31,670 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:31.669', '{"time": "2023-05-12T13:15:31.669+02:00", "waiting": false}'
+2023-05-12T13:15:32,673 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:32.670', '{"time": "2023-05-12T13:15:32.670+02:00", "waiting": false}'
+2023-05-12T13:15:33,675 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:33.673', '{"time": "2023-05-12T13:15:33.673+02:00", "waiting": false}'
+2023-05-12T13:15:34,676 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:34.674', '{"time": "2023-05-12T13:15:34.674+02:00", "waiting": false}'
+2023-05-12T13:15:35,678 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:35.676', '{"time": "2023-05-12T13:15:35.676+02:00", "waiting": false}'
+2023-05-12T13:15:36,681 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:36.678', '{"time": "2023-05-12T13:15:36.678+02:00", "waiting": false}'
+2023-05-12T13:15:37,683 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:37.681', '{"time": "2023-05-12T13:15:37.681+02:00", "waiting": false}'
+2023-05-12T13:15:38,687 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:38.683', '{"time": "2023-05-12T13:15:38.683+02:00", "waiting": false}'
+2023-05-12T13:15:39,688 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:39.686', '{"time": "2023-05-12T13:15:39.686+02:00", "waiting": false}'
+2023-05-12T13:15:40,692 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:40.688', '{"time": "2023-05-12T13:15:40.688+02:00", "waiting": false}'
+2023-05-12T13:15:41,694 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:41.692', '{"time": "2023-05-12T13:15:41.692+02:00", "waiting": false}'
+2023-05-12T13:15:42,698 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:42.694', '{"time": "2023-05-12T13:15:42.694+02:00", "waiting": false}'
+2023-05-12T13:15:43,701 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:43.697', '{"time": "2023-05-12T13:15:43.697+02:00", "waiting": false}'
+2023-05-12T13:15:44,705 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:44.701', '{"time": "2023-05-12T13:15:44.701+02:00", "waiting": false}'
+2023-05-12T13:15:45,708 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:45.705', '{"time": "2023-05-12T13:15:45.705+02:00", "waiting": false}'
+2023-05-12T13:15:46,724 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:46.708', '{"time": "2023-05-12T13:15:46.708+02:00", "waiting": false}'
+2023-05-12T13:15:47,715 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:47.712', '{"time": "2023-05-12T13:15:47.712+02:00", "waiting": false}'
+2023-05-12T13:15:48,730 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:48.717', '{"time": "2023-05-12T13:15:48.717+02:00", "waiting": false}'
+2023-05-12T13:15:49,724 INFO  - logOk OK RabbitMQFMU Got data '2023-05-12 13:15:49.721', '{"time": "2023-05-12T13:15:49.721+02:00", "waiting": false}'
+2023-05-12T13:15:49,824 WARN  - logError Fatal RabbitMQFMU Initialization failed
