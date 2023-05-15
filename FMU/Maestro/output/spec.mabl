@@ -80,8 +80,7 @@ import SimulationControl;
 			}
 			bool digi_shadow_1BoolIo[2];
 			uint digi_shadow_1UintVref[2];
-			real rabbitmqfmu_1RealShare[1];
-			real rabbitmqfmu_1RealIo[16];
+			bool rabbitmqfmu_1BoolShare[1];
 			bool rabbitmqfmu_1BoolIo[16];
 			int rabbitmqfmu_1IntIo[16];
 			string rabbitmqfmu_1StringIo[16];
@@ -366,22 +365,22 @@ import SimulationControl;
 					error "Failed to 'enterInitializationMode' on 'Digi_shadow_1'";
 			}
 			rabbitmqfmu_1UintVref[0] = 20;
-			status = RabbitMQFMU_1.getReal(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1RealIo);
+			status = RabbitMQFMU_1.getBoolean(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1BoolIo);
 			if( (((status == FMI_ERROR) || (status == FMI_FATAL))) )
 			{
 					if( ((status == FMI_ERROR)) )
 					{
-							logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+							logger.log(4, "GetBoolean failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
 					}
 					if( ((status == FMI_FATAL)) )
 					{
-							logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+							logger.log(4, "GetBoolean failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
 					}
-					error "Failed to 'getReal' on 'RabbitMQFMU_1'";
+					error "Failed to 'getBoolean' on 'RabbitMQFMU_1'";
 			}
-			rabbitmqfmu_1RealShare[0] = rabbitmqfmu_1RealIo[0];
+			rabbitmqfmu_1BoolShare[0] = rabbitmqfmu_1BoolIo[0];
 			digi_shadow_1UintVref[0] = 1;
-			digi_shadow_1BoolIo[0] = rabbitmqfmu_1RealShare[0] == 1;
+			digi_shadow_1BoolIo[0] = rabbitmqfmu_1BoolShare[0];
 			status = Digi_shadow_1.setBoolean(digi_shadow_1UintVref, 1, digi_shadow_1BoolIo);
 			if( (((status == FMI_ERROR) || (status == FMI_FATAL))) )
 			{
@@ -455,10 +454,10 @@ import SimulationControl;
 			real rabbitmqfmu_1CurrentTime = 0.0;
 			bool digi_shadow_1BoolIo[2];
 			real digi_shadow_1RealShare[1];
-			real rabbitmqfmu_1RealShare[1];
+			bool rabbitmqfmu_1BoolShare[1];
 			real digi_shadow_1RealIo[2];
 			uint digi_shadow_1UintVref[2];
-			real rabbitmqfmu_1RealIo[16];
+			bool rabbitmqfmu_1BoolIo[16];
 			uint rabbitmqfmu_1UintVref[16];
 			real jac_current_step_size = 0.0;
 			real jac_step_size = 0.0;
@@ -472,18 +471,18 @@ import SimulationControl;
 			string datawriter_headers[2] = { "{RabbitMQFMU}.RabbitMQFMU.waiting" , "{Digi_shadow}.Digi_shadow.real_c" };
 			DataWriterConfig datawriter_configuration = dataWriter1.writeHeader(datawriter_headers);
 			rabbitmqfmu_1UintVref[0] = 20;
-			status = RabbitMQFMU_1.getReal(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1RealIo);
+			status = RabbitMQFMU_1.getBoolean(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1BoolIo);
 			if( (((status == FMI_ERROR) || (status == FMI_FATAL))) )
 			{
 					if( ((status == FMI_ERROR)) )
 					{
-							logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+							logger.log(4, "GetBoolean failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
 					}
 					if( ((status == FMI_FATAL)) )
 					{
-							logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+							logger.log(4, "GetBoolean failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
 					}
-					error "Failed to 'getReal' on 'RabbitMQFMU_1'";
+					error "Failed to 'getBoolean' on 'RabbitMQFMU_1'";
 			}
 			digi_shadow_1UintVref[0] = 0;
 			status = Digi_shadow_1.getReal(digi_shadow_1UintVref, 1, digi_shadow_1RealIo);
@@ -499,10 +498,10 @@ import SimulationControl;
 					}
 					error "Failed to 'getReal' on 'Digi_shadow_1'";
 			}
-			rabbitmqfmu_1RealShare[0] = rabbitmqfmu_1RealIo[0];
+			rabbitmqfmu_1BoolShare[0] = rabbitmqfmu_1BoolIo[0];
 			digi_shadow_1RealShare[0] = digi_shadow_1RealIo[0];
 			real fmu_communicationpoints[2];
-			dataWriter1.writeDataPoint(datawriter_configuration, jac_current_communication_point, rabbitmqfmu_1RealShare[0], digi_shadow_1RealShare[0]);
+			dataWriter1.writeDataPoint(datawriter_configuration, jac_current_communication_point, rabbitmqfmu_1BoolShare[0], digi_shadow_1RealShare[0]);
 			bool any_discards = false;
 			while( (((jac_current_communication_point + jac_current_step_size) < jac_end_time)) )
 			{
@@ -513,7 +512,7 @@ import SimulationControl;
 				}
 				@Transfer();
 				digi_shadow_1UintVref[0] = 1;
-				digi_shadow_1BoolIo[0] = rabbitmqfmu_1RealShare[0] == 1;
+				digi_shadow_1BoolIo[0] = rabbitmqfmu_1BoolShare[0];
 				status = Digi_shadow_1.setBoolean(digi_shadow_1UintVref, 1, digi_shadow_1BoolIo);
 				if( (((status == FMI_ERROR) || (status == FMI_FATAL))) )
 				{
@@ -593,18 +592,18 @@ import SimulationControl;
 						any_discards = any_discards || !digi_shadow_1CurrentTimeFullStep;
 				}
 				rabbitmqfmu_1UintVref[0] = 20;
-				status = RabbitMQFMU_1.getReal(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1RealIo);
+				status = RabbitMQFMU_1.getBoolean(rabbitmqfmu_1UintVref, 1, rabbitmqfmu_1BoolIo);
 				if( (((status == FMI_ERROR) || (status == FMI_FATAL))) )
 				{
 						if( ((status == FMI_ERROR)) )
 						{
-								logger.log(4, "GetReal failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
+								logger.log(4, "GetBoolean failed on '%s' with status: FMI_ERROR", RabbitMQFMU_1);
 						}
 						if( ((status == FMI_FATAL)) )
 						{
-								logger.log(4, "GetReal failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
+								logger.log(4, "GetBoolean failed on '%s' with status: FMI_FATAL", RabbitMQFMU_1);
 						}
-						error "Failed to 'getReal' on 'RabbitMQFMU_1'";
+						error "Failed to 'getBoolean' on 'RabbitMQFMU_1'";
 				}
 				digi_shadow_1UintVref[0] = 0;
 				status = Digi_shadow_1.getReal(digi_shadow_1UintVref, 1, digi_shadow_1RealIo);
@@ -620,12 +619,12 @@ import SimulationControl;
 						}
 						error "Failed to 'getReal' on 'Digi_shadow_1'";
 				}
-				rabbitmqfmu_1RealShare[0] = rabbitmqfmu_1RealIo[0];
+				rabbitmqfmu_1BoolShare[0] = rabbitmqfmu_1BoolIo[0];
 				digi_shadow_1RealShare[0] = digi_shadow_1RealIo[0];
 				if( ((!any_discards)) )
 				{
 						jac_current_communication_point = jac_current_communication_point + jac_current_step_size;
-						dataWriter1.writeDataPoint(datawriter_configuration, jac_current_communication_point, rabbitmqfmu_1RealShare[0], digi_shadow_1RealShare[0]);
+						dataWriter1.writeDataPoint(datawriter_configuration, jac_current_communication_point, rabbitmqfmu_1BoolShare[0], digi_shadow_1RealShare[0]);
 						jac_current_step_size = jac_step_size;
 				}
 			}

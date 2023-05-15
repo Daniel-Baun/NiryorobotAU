@@ -18,6 +18,7 @@ class Model:
         return Fmi2Status.ok
 
     def fmi2EnterInitializationMode(self):
+
         return Fmi2Status.ok
 
     def fmi2ExitInitializationMode(self):
@@ -25,6 +26,10 @@ class Model:
         return Fmi2Status.ok
 
     def fmi2SetupExperiment(self, start_time, stop_time, tolerance):
+        start_time = 0
+        stop_time = 16
+        self.start_time = start_time
+        self.stop_time = stop_time
         return Fmi2Status.ok
 
     def fmi2SetReal(self, references, values):
@@ -115,7 +120,10 @@ class Fmi2Status:
     """Represents the status of the FMU or the results of function calls.
 
     Values:
-        * ok: all well
+        * ok: all wellelif group == "Fmi2FreeInstance":
+            result = Fmi2FreeInstanceReturn()
+            logger.info(f"Fmi2FreeInstance received, shutting down")
+            sys.exit(0)
         * warning: an issue has arisen, but the computation can continue.
         * discard: an operation has resulted in invalid output, which must be discarded
         * error: an error has ocurred for this specific FMU instance.
@@ -142,6 +150,7 @@ if __name__ == "__main__":
     
     m.boolean_a = True
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    time.sleep(10)
     m.boolean_a = False
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     assert m.real_c != 0.0
