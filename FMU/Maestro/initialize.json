@@ -1,18 +1,18 @@
 {
-    "fmus": {
-      "{RabbitMQFMU}": "/home/au682915/Bachelor/Code/FMU/RabbitMQFMU/rmqfmuv2.1.5/rabbitfmu_wait.fmu",
-  
-      "{Digi_shadow}": "/home/au682915/Bachelor/Code/FMU/UniFMU/model1.fmu"
-    },
-    "connections": {
-      "{RabbitMQFMU}.RabbitMQFMU.waiting": ["{Digi_shadow}.Digi_shadow.boolean_a"]
-      
-    },
-    "parameters": {
-    },
-    "logVariables": {
-      "{Digi_shadow}.Digi_shadow":["real_c"]
-    },
-    "algorithm":{"type":"fixed-step","size":0.1}
-  
-  }
+  "fmus": {
+    "{RabbitMQFMU}": "/home/au682915/Bachelor/Code/FMU/RabbitMQFMU/rmqfmuv2.1.5/rabbitfmu_wait.fmu",
+
+    "{Digi_shadow}": "/home/au682915/Bachelor/Code/FMU/UniFMU/model1.fmu"
+  },
+  "connections": {
+    "{RabbitMQFMU}.RabbitMQFMU.waiting": ["{Digi_shadow}.Digi_shadow.boolean_a"]
+    
+  },
+  "parameters": {
+  },
+  "logVariables": {
+    "{Digi_shadow}.Digi_shadow":["real_c"]
+  },
+  "algorithm":{"type":"fixed-step","size":1.0}
+
+}

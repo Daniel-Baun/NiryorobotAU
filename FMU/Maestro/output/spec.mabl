@@ -63,7 +63,7 @@ import SimulationControl;
 		{
 				error "Digi_shadow_1 IS NULL ";
 		}
-		real STEP_SIZE = 0.1;
+		real STEP_SIZE = 1.0;
 		real START_TIME = 0.0;
 		real END_TIME = 100.0;
 		int FMI_OK = 0;

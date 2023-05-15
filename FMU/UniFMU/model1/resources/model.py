@@ -26,10 +26,6 @@ class Model:
         return Fmi2Status.ok
 
     def fmi2SetupExperiment(self, start_time, stop_time, tolerance):
-        start_time = 0
-        stop_time = 16
-        self.start_time = start_time
-        self.stop_time = stop_time
         return Fmi2Status.ok
 
     def fmi2SetReal(self, references, values):
