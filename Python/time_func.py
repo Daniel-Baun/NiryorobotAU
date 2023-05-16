@@ -2,6 +2,8 @@ import csv
 from datetime import datetime, timedelta
 import re 
 import pandas as pd
+import matplotlib.pyplot as plt
+
 csvfilename = 'test_copy.csv'
 
 def write_time_to_csv(csvfilename):
@@ -14,24 +16,55 @@ def write_time_to_csv(csvfilename):
 
 def average_order_time(file_name):
     
-    #df = pd.read_csv(file_name, header=None, skiprows=[0], usecols=[0], names=['start', 'end'])
-    #df['start'] = pd.to_datetime(df['start'], format='%Y-%m-%dT%H:%M:%S.%f%z')
-    #df['end'] = pd.to_datetime(df['end'], format='%Y-%m-%dT%H:%M:%S.%f%z')
-    #df['diff'] = df['end'] - df['start']
-    #print(df['diff'].mean())
+    timestamps = []
+    with open(file_name, 'r') as csvfile:
+        reader = csv.reader(csvfile)
+        next(reader)
+        for row in reader:
+            timestamp = datetime.fromisoformat(row[0])
+            timestamps.append(timestamp)
 
-    # Read the CSV file into a DataFrame
-    df = pd.read_csv(file_name, header=None, skiprows=[0], usecols=[0], names=['time'])
+    mean_times = []
+    for i in range(1, len(timestamps), 2):
+        time_diff = timestamps[i] - timestamps[i-1]
+        mean_times.append(time_diff.total_seconds())
 
-    # Convert the column of interest to a datetime type
-    df['time'] = pd.to_datetime(df['time'], format='%Y-%m-%dT%H:%M:%S.%f%z')
+    return mean_times
+    #mean_time = sum(time_differences)/len(time_differences)
 
-    # Calculate the time differences between consecutive rows
-    df['time_diff'] = df['time'] - df['time'].shift(periods=1)
+def plot_mean_times(mean_times):
+    if mean_times:
+        plt.figure(figsize=(8,6))
+        plt.plot(mean_times, marker='o')
+        plt.axhline(y=sum(mean_times)/len(mean_times), color='r', linestyle='--', label='Mean time for all orders')
+        plt.xlabel('Order number')
+        plt.ylabel('Time (seconds)')
+        plt.title('Time to process orders')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
 
-    print(df['time_diff'])
-    print(df['time_diff'].mean())
+def plot_mean_times_line(mean_times):
+    if mean_times:
+        timestamps = range(1, len(mean_times)+1)
+        plt.figure(figsize=(8,6))
+        plt.plot(timestamps, mean_times, marker='o')
+        plt.axhline(y=sum(mean_times)/len(mean_times), color='r', linestyle='--', label='Mean time for all orders')
+        plt.xlabel('Order number')
+        plt.ylabel('Time (seconds)')
+        plt.title('Time to process orders')
+        plt.legend()
+        plt.grid(True)
+        plt.show()
+
+def print_mean_times(mean_times):
+    if mean_times:
+        for i, mean_time in enumerate(mean_times, start=1):
+            print(f'Mean time {i}: {mean_time} seconds')
+        print(f'Mean time for all orders: {sum(mean_times)/len(mean_times)} seconds')
 
 if __name__ == '__main__':
-    average_order_time(csvfilename)
+    mean_times = average_order_time(csvfilename)
+    plot_mean_times_line(mean_times)
+    #average_order_time(csvfilename)
 

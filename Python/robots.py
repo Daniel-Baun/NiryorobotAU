@@ -149,9 +149,9 @@ class Robot0(RobotLoop):
 
                     self.conveyor_lock.release()
                     print("unlocked robot0 ", {self.conveyor_lock.locked()})    
-                    write_time_to_csv(csvfilename)
                     print(data, type(data))
                     update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "DONE")
+                    write_time_to_csv(csvfilename)
                     self.client.wait(0.2)
                     self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
         
