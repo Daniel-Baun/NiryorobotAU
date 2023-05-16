@@ -3,12 +3,14 @@ import time
 
 class Model:
     def __init__(self) -> None:
-        self.boolean_a = False
+        self.waiting_boolean = False
+        self.processing_boolean = False
 
 
         self.reference_to_attribute = {
-            0: "real_c",
-            1: "boolean_a",
+            0: "time_for_finished_order",
+            1: "waiting_boolean",
+            2: "processing_boolean",
         }
 
         self._update_outputs()
@@ -18,7 +20,6 @@ class Model:
         return Fmi2Status.ok
 
     def fmi2EnterInitializationMode(self):
-
         return Fmi2Status.ok
 
     def fmi2ExitInitializationMode(self):
@@ -62,16 +63,19 @@ class Model:
 
         bytes = pickle.dumps(
             (
-                self.boolean_a,
+                self.waiting_boolean,
+                self.processing_boolean,
             )
         )
         return Fmi2Status.ok, bytes
 
     def fmi2ExtDeserialize(self, bytes) -> int:
         (
-            boolean_a,
+            waiting_boolean,
+            processing_boolean,
         ) = pickle.loads(bytes)
-        self.boolean_a = boolean_a
+        self.waiting_boolean = waiting_boolean
+        self.processing_boolean = processing_boolean
         self._update_outputs()
 
         return Fmi2Status.ok
@@ -94,16 +98,16 @@ class Model:
 
     def _update_outputs(self):
         global start_time
-        self.real_c = 0.0
-        if self.boolean_a and 'start_time' not in globals():
+        self.time_for_finished_order = 0.0
+        if self.waiting_boolean and 'start_time' not in globals():
             start_time = time.time()
             print("I am in if statement")
-        elif not self.boolean_a and 'start_time' in globals():
+        elif not self.waiting_boolean and not self.processing_boolean and 'start_time' in globals():
             print("I am in elif statement")
             end_time = time.time()
             duration = end_time - start_time
             del globals()['start_time']
-            self.real_c = duration
+            self.time_for_finished_order = duration
             
      
         #self.real_c = self.real_a + self.real_b
@@ -141,13 +145,16 @@ class Fmi2Status:
 
 if __name__ == "__main__":
     m = Model()
-    assert m.real_c == 0.0
-    assert m.boolean_a == False
+    assert m.time_for_finished_order == 0.0
+    assert m.waiting_boolean == False
+    assert m.processing_boolean == False
     
-    m.boolean_a = True
+    m.waiting_boolean = True
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    m.waiting_boolean = False
+    m.processing_boolean = True
     time.sleep(10)
-    m.boolean_a = False
+    m.processing_boolean = False
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
-    assert m.real_c != 0.0
-    print(m.real_c)
+    assert m.time_for_finished_order != 0.0
+    print(m.time_for_finished_order)

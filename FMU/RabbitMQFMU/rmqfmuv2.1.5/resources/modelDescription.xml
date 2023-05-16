@@ -12,10 +12,13 @@
         <Category name="logAll"/>
     </LogCategories>
 
-    <DefaultExperiment startTime="0.0" stopTime="100.0" stepSize="1.0"/>
+    <DefaultExperiment startTime="0.0" stopTime="100.0" stepSize="0.1"/>
     <ModelVariables>
     
         <ScalarVariable name="waiting" valueReference="20" variability="discrete" causality="output">
+        <Boolean />
+        </ScalarVariable>
+        <ScalarVariable name="processing" valueReference="21" variability="discrete" causality="output">
         <Boolean />
         </ScalarVariable> 
 
@@ -73,9 +76,11 @@
       <ModelStructure>
          <Outputs>
          <Unknown index="1"/>
+         <Unknown index="2"/>
          </Outputs>
          <InitialUnknowns>
          <Unknown index="1"/>
+         <Unknown index="2"/>
          </InitialUnknowns>
       </ModelStructure>
 

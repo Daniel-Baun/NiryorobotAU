@@ -3,7 +3,7 @@ import pika
 import json
 import time
 from datetime import datetime, timezone
-from DB_functions import is_order_waiting
+from DB_functions import is_order_processing, is_order_waiting
 
 import psycopg2
 
@@ -20,7 +20,7 @@ channel.exchange_declare(exchange='fmi_digital_twin', exchange_type='direct')
 #queue_name = result.method.queue
 #channel.queue_bind(exchange='fmi_digital_twin', queue=queue_name,
 #                   routing_key='data.from_cosim')
-time_sleep = 1
+time_sleep = 0.1
 
 print(' [*] Waiting for logs. To exit press CTRL+C, sleep time [ms]: ', time_sleep*1000)
 
@@ -35,6 +35,7 @@ def publish():
         #msg['time']= dt.isoformat()
         msg['time']= datetime.now(timezone.utc).astimezone().isoformat(timespec='milliseconds')
         msg['waiting'] = is_order_waiting(cur)
+        msg['processing'] = is_order_processing(cur)
         print(" [x] Sent %s" % json.dumps(msg))
         channel.basic_publish(exchange='fmi_digital_twin',
 	    			routing_key='data.to_cosim',

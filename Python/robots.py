@@ -80,7 +80,6 @@ class Robot1(RobotLoop):
             self.client.wait(0.2)
             if (is_order_waiting(self.parent.cursor)):
                 data = pop_queue(self.parent.cursor)
-                print(data)
                 print(data, type(data))
                 if not(data == None):
                     self.client.wait(0.5) #delay to get database queue

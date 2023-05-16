@@ -5,14 +5,15 @@
     "{Digi_shadow}": "/home/au682915/Bachelor/Code/FMU/UniFMU/model1.fmu"
   },
   "connections": {
-    "{RabbitMQFMU}.RabbitMQFMU.waiting": ["{Digi_shadow}.Digi_shadow.boolean_a"]
-    
+    "{RabbitMQFMU}.RabbitMQFMU.waiting": ["{Digi_shadow}.Digi_shadow.waiting_boolean"],
+    "{RabbitMQFMU}.RabbitMQFMU.processing": ["{Digi_shadow}.Digi_shadow.processing_boolean"]
   },
   "parameters": {
   },
   "logVariables": {
-    "{Digi_shadow}.Digi_shadow":["real_c"]
+    "{Digi_shadow}.Digi_shadow":["time_for_finished_order"],
+    "{RabbitMQFMU}.RabbitMQFMU":["waiting","processing"]
   },
-  "algorithm":{"type":"fixed-step","size":1.0}
+  "algorithm":{"type":"fixed-step","size":0.1}
 
 }

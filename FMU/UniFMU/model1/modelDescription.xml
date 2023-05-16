@@ -11,11 +11,15 @@
   </LogCategories>
   <ModelVariables>
     <!--Index of variable = "1"-->
-    <ScalarVariable name="real_c" valueReference="0" variability="continuous" causality="output" initial="calculated">
+    <ScalarVariable name="time_for_finished_order" valueReference="0" variability="continuous" causality="output" initial="calculated">
       <Real />
     </ScalarVariable>
     <!--Index of variable = "2"-->
-    <ScalarVariable name="boolean_a" valueReference="1" variability="discrete" causality="input">
+    <ScalarVariable name="waiting_boolean" valueReference="1" variability="discrete" causality="input">
+      <Boolean start="false" />
+    </ScalarVariable>
+    <!--Index of variable = "3"-->
+    <ScalarVariable name="processing_boolean" valueReference="2" variability="discrete" causality="input">
       <Boolean start="false" />
     </ScalarVariable>
 
