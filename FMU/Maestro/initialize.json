@@ -11,7 +11,7 @@
   "parameters": {
   },
   "logVariables": {
-    "{Digi_shadow}.Digi_shadow":["time_for_finished_order"],
+    "{Digi_shadow}.Digi_shadow":["time_for_finished_order", "message_string"],
     "{RabbitMQFMU}.RabbitMQFMU":["waiting","processing"]
   },
   "algorithm":{"type":"fixed-step","size":0.1}

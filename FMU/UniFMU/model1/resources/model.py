@@ -6,6 +6,7 @@ class Model:
     def __init__(self) -> None:
         self.waiting_boolean = False
         self.processing_boolean = False
+        self.message_string = ""
         self.DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
         self.cursor = self.DB_conn.cursor()
 
@@ -13,6 +14,7 @@ class Model:
             0: "time_for_finished_order",
             1: "waiting_boolean",
             2: "processing_boolean",
+            3: "message_string",
         }
 
         self._update_outputs()
@@ -68,6 +70,7 @@ class Model:
             (
                 self.waiting_boolean,
                 self.processing_boolean,
+                self.message_string,
             )
         )
         return Fmi2Status.ok, bytes
@@ -76,9 +79,11 @@ class Model:
         (
             waiting_boolean,
             processing_boolean,
+            message_string,
         ) = pickle.loads(bytes)
         self.waiting_boolean = waiting_boolean
         self.processing_boolean = processing_boolean
+        self.message_string = message_string
         self._update_outputs()
 
         return Fmi2Status.ok
@@ -110,6 +115,7 @@ class Model:
     def _update_outputs(self):
         global start_time
         self.time_for_finished_order = 0.0
+        self.message_string = ""
         if self.waiting_boolean and 'start_time' not in globals():
             start_time = time.time()
             print("I am in if statement")
@@ -121,10 +127,9 @@ class Model:
             self.time_for_finished_order = duration
             if duration > 32:
                 self._update_failure_status()
+                self.message_string = "Order took too long to process"
             
-        #32 sekunders, send warning 
-        #connection to database - this order was slow
-        
+
 
 
 class Fmi2Status:

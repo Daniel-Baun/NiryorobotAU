@@ -22,14 +22,20 @@
     <ScalarVariable name="processing_boolean" valueReference="2" variability="discrete" causality="input">
       <Boolean start="false" />
     </ScalarVariable>
+    <!--Index of variable = "4"-->
+    <ScalarVariable name="message_string" valueReference="3" variability="discrete" causality="output" initial="calculated">
+      <String />
+    </ScalarVariable>
 
   </ModelVariables>
   <ModelStructure>
     <Outputs>
       <Unknown index="1" dependencies="" />
+      <Unknown index="4" dependencies="" />
     </Outputs>
     <InitialUnknowns>
       <Unknown index="1" dependencies="" />
+      <Unknown index="4" dependencies="" />
     </InitialUnknowns>
   </ModelStructure>
 </fmiModelDescription>
