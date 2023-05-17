@@ -55,14 +55,14 @@ def change_quantity_product( product: str, cursor, conn):
 def pop_queue(cursor):
     query = ("SELECT id, desc_item "+
             "FROM public.orders "+
-            "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'WAITING')")
+            "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'WAITING' AND failure_status = false)")
     cursor.execute(query)
     return cursor.fetchone()
 
 def finished_order(cursor):
     query = ("SELECT id, desc_item "+
             "FROM public.orders "+
-            "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING')")
+            "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING' AND failure_status = false)")
     cursor.execute(query)
     return cursor.fetchone()
 
@@ -92,7 +92,7 @@ def put_queue(cursor, conn, desc_item, no_product):
 def is_order_waiting(cursor):
     query = ("SELECT status "+
             "FROM public.orders "+
-            "WHERE status = 'WAITING'")
+            "WHERE status = 'WAITING' AND failure_status = false")
     cursor.execute(query)
     if (cursor.rowcount == 0):
         return False
@@ -101,7 +101,7 @@ def is_order_waiting(cursor):
 def is_order_processing(cursor):
     query = ("SELECT status "+
             "FROM public.orders "+
-            "WHERE status = 'PROCESSING'")
+            "WHERE status = 'PROCESSING' AND failure_status = false")
     cursor.execute(query)
     if (cursor.rowcount == 0):
         return False

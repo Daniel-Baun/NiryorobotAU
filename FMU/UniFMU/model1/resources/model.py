@@ -1,11 +1,13 @@
 import pickle
 import time 
+import psycopg2
 
 class Model:
     def __init__(self) -> None:
         self.waiting_boolean = False
         self.processing_boolean = False
-
+        self.DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+        self.cursor = self.DB_conn.cursor()
 
         self.reference_to_attribute = {
             0: "time_for_finished_order",
@@ -14,6 +16,7 @@ class Model:
         }
 
         self._update_outputs()
+        self._update_failure_status()
 
     def fmi2DoStep(self, current_time, step_size, no_step_prior):
         self._update_outputs()
@@ -95,6 +98,14 @@ class Model:
             values.append(getattr(self, self.reference_to_attribute[r]))
 
         return Fmi2Status.ok, values
+        
+    def _update_failure_status(self):
+        query = ("UPDATE public.orders "+
+                 "SET failure_status = true "+ 
+                 "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING')")
+        self.cursor.execute(query,)
+        self.DB_conn.commit()
+        return
 
     def _update_outputs(self):
         global start_time
@@ -108,12 +119,12 @@ class Model:
             duration = end_time - start_time
             del globals()['start_time']
             self.time_for_finished_order = duration
+            if duration > 32:
+                self._update_failure_status()
             
-     
-        #self.real_c = self.real_a + self.real_b
-        #self.integer_c = self.integer_a + self.integer_b
-        #self.boolean_c = self.boolean_a or self.boolean_b
-        #self.string_c = self.string_a + self.string_b
+        #32 sekunders, send warning 
+        #connection to database - this order was slow
+        
 
 
 class Fmi2Status:
@@ -153,7 +164,7 @@ if __name__ == "__main__":
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     m.waiting_boolean = False
     m.processing_boolean = True
-    time.sleep(10)
+    time.sleep(33)
     m.processing_boolean = False
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     assert m.time_for_finished_order != 0.0
