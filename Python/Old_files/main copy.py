@@ -7,7 +7,7 @@ import time
 import yaml
 from threading import Lock, Thread
 from pyniryo import *
-from poses import *
+from Python.Old_files.poses import *
 
 #setup
 workspace_storage = 'STORAGE_WS'

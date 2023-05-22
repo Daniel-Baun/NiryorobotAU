@@ -1,16 +1,12 @@
 import os
 import sys
-import math
-import copy
-import random
-import time
 import yaml
 from threading import Lock, Thread
 from pyniryo import *
-from poses import *
 from settings import * 
 from DB_functions import *
 from time_func import *
+import configparser
 
 conveyor_id = ConveyorID.ID_1
 
@@ -259,8 +255,7 @@ def main_robot(db_name, user, password, host, port):
     print("I get here 2")
     client1.release_with_tool()
     client2.release_with_tool()
-    if(db_name == ""):
-        DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+
     DB_conn = psycopg2.connect(database = db_name, user = user, password = password, host = host, port = port)
     
     ws_list = client1.get_workspace_list()
@@ -308,11 +303,18 @@ if __name__ == '__main__':
     client1.update_tool()
     client2.update_tool()
     print("I get here 0")
-    db_name = input("Enter the database name: ")
-    user = input("Enter the user name: ")
-    password = input("Enter the password: ")
-    host = input("Enter the host: ")
-    port = input("Enter the port: ")
+
+    #The user needs to input database name, user name, password, host and port in config.ini
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    
+    db_name = config.get('database', 'db_name')
+    user = config.get('database', 'user')
+    password = config.get('database', 'password')
+    host = config.get('database', 'host')
+    port = config.get('database', 'port')
+    
+
     main_robot()
 
 #Note to myself
@@ -327,4 +329,4 @@ if __name__ == '__main__':
 #Done
 #Rette pick position for robot0 på con1
 #randomize placearea - placearea is now in a 3x3 box
-#add check connetion robotloop1 med kun connection og ikke credentials på login
+#add check connetion robotloop1 med kun connection og ikke credentials på logindb_name = input("Enter the database name: ")

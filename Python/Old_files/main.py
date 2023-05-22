@@ -7,7 +7,7 @@ import time
 import yaml
 from threading import Lock, Thread
 from pyniryo import *
-from poses import *
+from Python.Old_files.poses import *
 from DB_functions import *
 from settings import *
 import queue

@@ -4,35 +4,46 @@ import json
 import time
 from datetime import datetime, timezone
 from DB_functions import is_order_processing, is_order_waiting
-
 import psycopg2
+import configparser
 
+#The user needs to input database name, user name, password, host and port in config.ini
+config = configparser.ConfigParser()
+config.read('config.ini')
 
-connection = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+db_name = config.get('database', 'db_name')
+user = config.get('database', 'user')
+password = config.get('database', 'password')
+host = config.get('database', 'host')
+port = config.get('database', 'port')
+
+#connect to the database
+connection = psycopg2.connect(database = db_name, user = user, password = password, host = host, port = port)
 cur = connection.cursor()
 
+#Connect to the RabbitMQ server
 connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
 channel = connection.channel()
 print("Declaring exchange")
+#Declare the exchange on the RabbitMQ server, when using RabbitMQFMU, the exchange name must be fmi_digital_twin for the direct exchange
 channel.exchange_declare(exchange='fmi_digital_twin', exchange_type='direct')
+
+#The code below can be needed if you want data from the co-simulation
 #print("Creating queue")
 #result = channel.queue_declare(queue='', exclusive=True)
 #queue_name = result.method.queue
 #channel.queue_bind(exchange='fmi_digital_twin', queue=queue_name,
 #                   routing_key='data.from_cosim')
+
+#The time_sleep variable is used to set the time between each message is sent to the RabbitMQ server
+#This is the time between each time the function publish() is called
 time_sleep = 0.1
 
 print(' [*] Waiting for logs. To exit press CTRL+C, sleep time [ms]: ', time_sleep*1000)
 
 def publish():
     while True:
-        #if (is_order_waiting(cur)):
-        #dt=datetime.strptime('2019-01-04T16:41:24+0200', "%Y-%m-%dT%H:%M:%S%z")
         msg = {}
-        #msg['time']= dt.isoformat()
-        #timet = datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%S.%f%z")
-        #msg['time']= timet.isoformat()
-        #msg['time']= dt.isoformat()
         msg['time']= datetime.now(timezone.utc).astimezone().isoformat(timespec='milliseconds')
         msg['waiting'] = is_order_waiting(cur)
         msg['processing'] = is_order_processing(cur)
@@ -41,10 +52,10 @@ def publish():
 	    			routing_key='data.to_cosim',
 	    			body=json.dumps(msg))
         time.sleep(time_sleep)
-        #else:
-            #time.sleep(time_sleep)
 
 publish()
+
+#The code below can be needed if you want data from the co-simulation (added in another script)
 #def callback(ch, method, properties, body):
 #    print(" [x] %r" % body)
 #    if "waiting for input data for simulation" in str(body):

@@ -2,17 +2,17 @@ import tkinter as tk
 import customtkinter as ct
 from DB_functions import *
 from settings import *
+import configparser
 
-#The user needs to input database name, user name, password, host and port
-db_name = input("Enter the database name: ")
-user = input("Enter the user name: ")
-password = input("Enter the password: ")
-host = input("Enter the host: ")
-port = input("Enter the port: ")
+#The user needs to input database name, user name, password, host and port in config.ini
+config = configparser.ConfigParser()
+config.read('config.ini')
 
-#If the user does not input anything, the default values for our database is used
-if(db_name == ""):
-        connection = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+db_name = config.get('database', 'db_name')
+user = config.get('database', 'user')
+password = config.get('database', 'password')
+host = config.get('database', 'host')
+port = config.get('database', 'port')
 
 #connect to the database
 connection = psycopg2.connect(database = db_name, user = user, password = password, host = host, port = port)
