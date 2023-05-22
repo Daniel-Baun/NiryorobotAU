@@ -1,8 +1,7 @@
-#from odoo import api, models, fields
 import psycopg2
 from pyniryo import *
 
-
+#Function to check connection to database
 def check_connection(database: str, user: str, password: str, host: str, port: str):
     try:
         conn = psycopg2.connect(database = database, user = user, password = password, host = host, port = port, connect_timeout=1)
@@ -11,7 +10,7 @@ def check_connection(database: str, user: str, password: str, host: str, port: s
     except psycopg2.Error:
         return False
 
-
+#Function to match table reference in the database to the Niryo Ned 2 robot
 def match_table_ref_to_robots(order: str):
     try:
         match order:
@@ -30,6 +29,8 @@ def match_table_ref_to_robots(order: str):
     except:
         print("Input invalid or does not exist in database")
 
+#Function to get quantity of product in database
+#The quantity is the number of products in stock, which is inserted in Odoo
 def get_quantity_product(product: str, cursor):
 
     query = ("SELECT public.stock_quant.quantity "+ 
@@ -42,7 +43,8 @@ def get_quantity_product(product: str, cursor):
         return 0
     return int(data[0])
 
-def change_quantity_product( product: str, cursor, conn):
+#Function to change quantity of product in database by subtratcing 1
+def change_quantity_product(product: str, cursor, conn):
     query = ("UPDATE public.stock_quant " +
             "SET quantity = quantity - 1 " +
             "FROM public.product_product " +
@@ -52,6 +54,7 @@ def change_quantity_product( product: str, cursor, conn):
     conn.commit()
     return
 
+#Function to get the minimum id of the order that is waiting and where the failure status is false
 def pop_queue(cursor):
     query = ("SELECT id, desc_item "+
             "FROM public.orders "+
@@ -59,6 +62,7 @@ def pop_queue(cursor):
     cursor.execute(query)
     return cursor.fetchone()
 
+#Function to get the minimum id of the order that is processing and where the failure status is false
 def finished_order(cursor):
     query = ("SELECT id, desc_item "+
             "FROM public.orders "+
@@ -66,6 +70,7 @@ def finished_order(cursor):
     cursor.execute(query)
     return cursor.fetchone()
 
+#Function to update the status of the order to either waiting, processing or done
 def update_order_status(cursor, conn, id, status):
     query = ("UPDATE public.orders "+
              "SET status =%s "+ 
@@ -74,10 +79,11 @@ def update_order_status(cursor, conn, id, status):
     conn.commit()
     return
 
+#Function to check if the product is avaliable in the database based on the quantity
 def product_avaliable(product, no_product, cursor):
     return (get_quantity_product(product, cursor) >= no_product)
 
-
+#Function to put things in a queue, so that multiple orders can be waiting
 def put_queue(cursor, conn, desc_item, no_product):
     if (product_avaliable(desc_item, no_product, cursor)):
         query = ("INSERT INTO public.orders (desc_item, no_product)"+
@@ -89,6 +95,7 @@ def put_queue(cursor, conn, desc_item, no_product):
         print("Stock not avaliable for order")
         return
 
+#Function to check if there is an order waiting in the database
 def is_order_waiting(cursor):
     query = ("SELECT status "+
             "FROM public.orders "+
@@ -98,6 +105,7 @@ def is_order_waiting(cursor):
         return False
     return True
 
+#Function to check if there is an order processing in the database
 def is_order_processing(cursor):
     query = ("SELECT status "+
             "FROM public.orders "+
@@ -108,17 +116,5 @@ def is_order_processing(cursor):
     return True
 
 
-#SELECT id as temp_id,desc_item
-#FROM public.orders
-#WHERE id = (SELECT MIN(id) FROM public.orders) AND status = 'WAITING';
-#UPDATE public.orders 
-#SET status='PROCESSING' 
-#WHERE id = (SELECT Min(id) FROM public.orders WHERE status = 'WAITING');
 
-    
-#print(check_connection('main_db', 'au682915', 'admin', 'localhost', '5432'))
-#print(get_quantity_product('GR01', cur))
-#change_quantity_product('GR01', cur)
-#print(type(get_quantity_product('GR01', cur)))
-#print(get_quantity_product('GR01', cur))
 

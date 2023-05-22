@@ -3,15 +3,12 @@ import customtkinter as ct
 from DB_functions import *
 from settings import *
 
+
 connection = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
 
 cur = connection.cursor()
 
-#window = tk.Tk()
-#
-#label = tk.Label(text="Hello World", font=("Roboto", 20))
-#label.pack()
-#window.mainloop()
+
 root = ct.CTk()
 root.geometry("500x500")
 ct.set_appearance_mode("dark")

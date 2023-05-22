@@ -1,6 +1,8 @@
 from pyniryo import *
 from poses import *
 
+#Helper script to reset the robot positions and stop the conveyors
+
 # robot 1
 robot1_ip_address = "169.254.200.201"  
 
