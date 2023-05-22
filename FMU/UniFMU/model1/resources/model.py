@@ -121,7 +121,7 @@ class Model:
         self.DB_conn.commit()
         return
 
-    def _update_outputs(self):
+    def __update_outputs(self):
         global start_time
         self.time_for_finished_order = 0.0
         self.message_string = ""
@@ -137,6 +137,22 @@ class Model:
             if duration > 32:   
                 self._update_failure_status()
                 self.message_string = "Order took too long to process"
+    
+    def _update_outputs(self):
+        self.time_for_finished_order = 0.0
+        self.message_string = ""
+        if self.waiting_boolean:
+            if not hasattr(self, "start_time"):
+                self.start_time = time.time()
+        else:
+            if hasattr(self, "start_time"):
+                end_time = time.time()
+                duration = end_time - self.start_time
+                delattr(self, "start_time")
+                self.time_for_finished_order = duration
+                if duration > 32:   
+                    self._update_failure_status()
+                    self.message_string = "Order took too long to process"
     
 
 
