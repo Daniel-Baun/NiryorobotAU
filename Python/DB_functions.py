@@ -1,5 +1,6 @@
 import psycopg2
 from pyniryo import *
+import pyautogui as pg
 
 #Function to check connection to database
 def check_connection(database: str, user: str, password: str, host: str, port: str):
@@ -114,6 +115,24 @@ def is_order_processing(cursor):
     if (cursor.rowcount == 0):
         return False
     return True
+
+def check_order_failed(cursor, id):
+    query = ("SELECT failure_status "+
+            "FROM public.orders "+
+            "WHERE id = (SELECT max(id) FROM public.orders)")
+    cursor.execute(query)
+    bool_value = cursor.fetchone()
+    if(cursor.rowcount == 0):
+        return False
+    else:
+        if(bool_value[0]):
+            pg.alert(text="Time limit exceeded for order \n Fix system manually and reset the system", title="Order failed", button="OK")
+            return True
+        return False
+    
+    
+
+
 
 
 

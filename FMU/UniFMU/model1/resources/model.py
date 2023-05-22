@@ -1,13 +1,22 @@
 import pickle
 import time 
 import psycopg2
+import configparser
 
 class Model:
     def __init__(self) -> None:
         self.waiting_boolean = False
         self.processing_boolean = False
         self.message_string = ""
-        self.DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+        self.config = configparser.ConfigParser()
+        self.config.read('config.ini')
+    
+        self.db_name = self.config.get('database', 'db_name')
+        self.user = self.config.get('database', 'user')
+        self.password = self.config.get('database', 'password')
+        self.host = self.config.get('database', 'host')
+        self.port = self.config.get('database', 'port')
+        self.DB_conn = psycopg2.connect(database = self.db_name, user = self.user, password = self.password, host = self.host, port = self.port)
         self.cursor = self.DB_conn.cursor()
 
         self.reference_to_attribute = {
@@ -107,7 +116,7 @@ class Model:
     def _update_failure_status(self):
         query = ("UPDATE public.orders "+
                  "SET failure_status = true "+ 
-                 "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING')")
+                 "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING' AND failure_status = false)")
         self.cursor.execute(query,)
         self.DB_conn.commit()
         return
@@ -125,10 +134,10 @@ class Model:
             duration = end_time - start_time
             del globals()['start_time']
             self.time_for_finished_order = duration
-            if duration > 32:
+            if duration > 32:   
                 self._update_failure_status()
                 self.message_string = "Order took too long to process"
-            
+    
 
 
 
