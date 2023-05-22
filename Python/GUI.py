@@ -24,10 +24,12 @@ root.geometry("500x500")
 ct.set_appearance_mode("dark")
 text_box = ct.CTkTextbox(master=root, font=("Roboto", 20), width=300, height=70)
 
+
 def send_order():
         print(type(text_box.get("0.0", tk.END)))  
+        #Checks if the order is valid and sends it to the production queue
         if(str(text_box.get("0.0", tk.END)) == "1 - Green Rectangle\n"):
-                check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
+                check_connection(db_name, user, password, host, port)
                 if not(product_avaliable("GR01", 1, cur)):
                         error_msg()
                         return  
@@ -38,7 +40,7 @@ def send_order():
                 text_box.insert("0.0", "Order sent to production!")
                 text_box.configure(state="disabled")
         elif(str(text_box.get("0.0", tk.END)) == "1 - Green Circle\n"):
-                check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
+                check_connection(db_name, user, password, host, port)
                 if not(product_avaliable("GC01", 1, cur)):
                         error_msg()
                         return  
@@ -49,7 +51,7 @@ def send_order():
                 text_box.insert("0.0", "Order sent to production!")
                 text_box.configure(state="disabled")
         elif(str(text_box.get("0.0", tk.END)) == "1 - Red Rectangle\n"):
-                check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
+                check_connection(db_name, user, password, host, port)
                 if not(product_avaliable("RR01", 1, cur)):
                         error_msg()
                         return  
@@ -60,7 +62,7 @@ def send_order():
                 text_box.insert("0.0", "Order sent to production!")
                 text_box.configure(state="disabled")
         elif(str(text_box.get("0.0", tk.END)) == "1 - Red Circle\n"):
-                check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
+                check_connection(db_name, user, password, host, port)
                 if not(product_avaliable("RC01", 1, cur)):
                         error_msg()
                         return  
@@ -71,7 +73,7 @@ def send_order():
                 text_box.insert("0.0", "Order sent to production!")
                 text_box.configure(state="disabled")
         elif(str(text_box.get("0.0", tk.END)) == "1 - Blue Rectangle\n"):
-                check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
+                check_connection(db_name, user, password, host, port)
                 if not(product_avaliable("BR01", 1, cur)):
                         error_msg()
                         return  
@@ -82,7 +84,7 @@ def send_order():
                 text_box.insert("0.0", "Order sent to production!")
                 text_box.configure(state="disabled")
         elif(str(text_box.get("0.0", tk.END)) == "1 - Blue Circle\n"):
-                check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
+                check_connection(db_name, user, password, host, port)
                 if not(product_avaliable("BC01", 1, cur)):
                         error_msg()
                         return  
@@ -99,12 +101,13 @@ def send_order():
                 text_box.configure(state="disabled")
                 return
 def error_msg():
+        #Displays an error message if the product is not avaliable
         text_box.configure(state="normal")
         text_box.delete("0.0", tk.END)
         text_box.insert("0.0", "Error, please enter a valid order")
         text_box.configure(state="disabled")
         return
-
+#Changes the text in the text box
 def change_text_box(text, bool):
     if (bool):
         text_box.configure(state="normal")
@@ -143,6 +146,7 @@ def change_text_box_blue_cir():
         text_box.insert("0.0", "1 - Blue Circle")
         text_box.configure(state="disabled")
 
+#Making the buttons for the products
 button_green_rectangle = ct.CTkButton(master=root, text="Rectangle", font=("Roboto", 20),fg_color="green",  command=change_text_box_green_rec)
 button_green_circle = ct.CTkButton(master=root, text="Circle", font=("Roboto", 20),fg_color="green", command=change_text_box_green_cir)
 button_red_rectangle = ct.CTkButton(master=root, text="Rectangle", font=("Roboto", 20),fg_color="blue", command=change_text_box_blue_rec)
