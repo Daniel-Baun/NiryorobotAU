@@ -8,7 +8,6 @@ import yaml
 from threading import Lock, Thread
 from pyniryo import *
 from poses import *
-from main import match_table_ref_to_robots
 from settings import * 
 from DB_functions import *
 from time_func import *
@@ -80,7 +79,6 @@ class Robot1(RobotLoop):
             self.client.wait(0.2)
             if (is_order_waiting(self.parent.cursor)):
                 data = pop_queue(self.parent.cursor)
-                print(data, type(data))
                 if not(data == None):
                     self.client.wait(0.5) #delay to get database queue
                     local_shape, local_color = match_table_ref_to_robots(data[1])
