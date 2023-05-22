@@ -255,13 +255,16 @@ def load_yaml(path_):
         print("Empty or missing file: {}".format(path_))
         return {}
 
-def main_robot():
+def main_robot(db_name, user, password, host, port):
     print("I get here 1")
     saved_joint_poses = load_saved_joint_poses()  # load all the robots poses
     print("I get here 2")
     client1.release_with_tool()
     client2.release_with_tool()
-    DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+    if(db_name == ""):
+        DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+    DB_conn = psycopg2.connect(database = db_name, user = user, password = password, host = host, port = port)
+    
     ws_list = client1.get_workspace_list()
     if workspace_storage not in ws_list:
         print('Error : ', workspace_storage, 'not found in robot1 workspace list..')
@@ -307,6 +310,11 @@ if __name__ == '__main__':
     client1.update_tool()
     client2.update_tool()
     print("I get here 0")
+    db_name = input("Enter the database name: ")
+    user = input("Enter the user name: ")
+    password = input("Enter the password: ")
+    host = input("Enter the host: ")
+    port = input("Enter the port: ")
     main_robot()
 
 #Note to myself
