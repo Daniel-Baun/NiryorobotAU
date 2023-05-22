@@ -3,19 +3,29 @@ import customtkinter as ct
 from DB_functions import *
 from settings import *
 
+#The user needs to input database name, user name, password, host and port
+db_name = input("Enter the database name: ")
+user = input("Enter the user name: ")
+password = input("Enter the password: ")
+host = input("Enter the host: ")
+port = input("Enter the port: ")
 
-connection = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+#If the user does not input anything, the default values for our database is used
+if(db_name == ""):
+        connection = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
 
+#connect to the database
+connection = psycopg2.connect(database = db_name, user = user, password = password, host = host, port = port)
 cur = connection.cursor()
 
-
+#Create the GUI
 root = ct.CTk()
 root.geometry("500x500")
 ct.set_appearance_mode("dark")
 text_box = ct.CTkTextbox(master=root, font=("Roboto", 20), width=300, height=70)
+
 def send_order():
         print(type(text_box.get("0.0", tk.END)))  
-        
         if(str(text_box.get("0.0", tk.END)) == "1 - Green Rectangle\n"):
                 check_connection('main_db', 'au682915', 'admin', 'localhost', '5432')
                 if not(product_avaliable("GR01", 1, cur)):
@@ -94,9 +104,6 @@ def error_msg():
         text_box.insert("0.0", "Error, please enter a valid order")
         text_box.configure(state="disabled")
         return
-# Setting window size
-
-
 
 def change_text_box(text, bool):
     if (bool):
