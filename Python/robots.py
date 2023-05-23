@@ -7,7 +7,7 @@ from settings import *
 from DB_functions import *
 from time_func import *
 import configparser
-
+import atexit
 
 conveyor_id = ConveyorID.ID_1
 
@@ -65,6 +65,10 @@ class Robot1(RobotLoop):
         super().__init__(client, parent)
 
         self.workspace = workspace
+    @atexit.register
+    def stop_conveyor(self):
+        self.parent.conveyor_controller(0)
+
 
     def robot_loop(self):
         print("Robot1 loop start")
