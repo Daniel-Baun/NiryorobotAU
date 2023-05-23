@@ -29,15 +29,15 @@ sleep 3
 current_dir=$(pwd)
 echo "Current dir: $current_dir"
 
-cd ../../Code/Python &&
+cd Python &&
 nohup python3 GUI.py > gui_log.txt 2>&1 &
-
+cd Python &&
 nohup python3 robots.py > robots_log.txt 2>&1 &
-
-cd ../FMU/Maestro &&
+sleep 20
+cd FMU/Maestro &&
 nohup java -jar maestro-2.3.0-jar-with-dependencies.jar interpret import/spec.mabl -output output > maestro_log.txt 2>&1 &
 
-cd ../../Python &&
+cd Python &&
 nohup python3 publish_to_fmu.py > publish_log.txt 2>&1 &
 
 # Wait for user input to exit the script

@@ -65,10 +65,6 @@ class Robot1(RobotLoop):
         super().__init__(client, parent)
 
         self.workspace = workspace
-    @atexit.register
-    def stop_conveyor(self):
-        self.parent.conveyor_controller(0)
-
 
     def robot_loop(self):
         print("Robot1 loop start")
@@ -242,7 +238,7 @@ def create_new_workspace():
 # load all the robots pose or ask for new ones
 def load_saved_joint_poses():
     file_path = os.path.join(os.getcwd(), conf_file_name)
-
+    print('file path : ', file_path)
     saved_joints_poses = load_yaml(file_path)
     if saved_joints_poses:
         print('setup positions retrieved from {} file'.format(conf_file_name))

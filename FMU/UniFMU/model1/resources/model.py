@@ -2,14 +2,17 @@ import pickle
 import time 
 import psycopg2
 import configparser
+import os
 
 class Model:
     def __init__(self) -> None:
         self.waiting_boolean = False
         self.processing_boolean = False
         self.message_string = ""
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.config_file = os.path.abspath(os.path.join(self.script_dir, 'config.ini'))
         self.config = configparser.ConfigParser()
-        self.config.read('config.ini')
+        self.config.read(self.config_file)
     
         self.db_name = self.config.get('database', 'db_name')
         self.user = self.config.get('database', 'user')
@@ -27,7 +30,7 @@ class Model:
         }
 
         self._update_outputs()
-        self._update_failure_status()
+        # self._update_failure_status()
 
     def fmi2DoStep(self, current_time, step_size, no_step_prior):
         self._update_outputs()
@@ -121,24 +124,41 @@ class Model:
         self.DB_conn.commit()
         return
 
-    def __update_outputs(self):
-        global start_time
+    #def __update_outputs(self):
+    #    global start_time
+    #    self.time_for_finished_order = 0.0
+    #    self.message_string = ""
+    #    if self.waiting_boolean and 'start_time' not in globals():
+    #        start_time = time.time()
+    #        print("I am in if statement")
+    #    elif not self.waiting_boolean and not self.processing_boolean and 'start_time' in globals():
+    #        print("I am in elif statement")
+    #        end_time = time.time()
+    #        duration = end_time - start_time
+    #        del globals()['start_time']
+    #        self.time_for_finished_order = duration
+    #        if duration > 32:   
+    #            self._update_failure_status()
+    #            self.message_string = "Order took too long to process"
+    
+    def _update_outputs(self):
         self.time_for_finished_order = 0.0
         self.message_string = ""
-        if self.waiting_boolean and 'start_time' not in globals():
+        start_time = 0.0
+        if not(self.waiting_boolean and self.processing_boolean):
             start_time = time.time()
-            print("I am in if statement")
-        elif not self.waiting_boolean and not self.processing_boolean and 'start_time' in globals():
-            print("I am in elif statement")
+        elif ((self.waiting_boolean or self.processing_boolean) and failure_status == False):
             end_time = time.time()
             duration = end_time - start_time
-            del globals()['start_time']
+            
             self.time_for_finished_order = duration
             if duration > 32:   
                 self._update_failure_status()
                 self.message_string = "Order took too long to process"
-    
-    def _update_outputs(self):
+        
+
+
+    def __update_outputs(self):
         self.time_for_finished_order = 0.0
         self.message_string = ""
         if self.waiting_boolean:
@@ -189,7 +209,6 @@ if __name__ == "__main__":
     assert m.time_for_finished_order == 0.0
     assert m.waiting_boolean == False
     assert m.processing_boolean == False
-    
     m.waiting_boolean = True
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     m.waiting_boolean = False
