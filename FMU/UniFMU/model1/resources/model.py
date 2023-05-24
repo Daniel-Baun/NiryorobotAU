@@ -124,7 +124,7 @@ class Model:
         self.DB_conn.commit()
         return
 
-    #def __update_outputs(self):
+    #def _update_outputs(self):
     #    global start_time
     #    self.time_for_finished_order = 0.0
     #    self.message_string = ""
@@ -142,17 +142,27 @@ class Model:
     #            self.message_string = "Order took too long to process"
     
     def _update_outputs(self):
-        if not(self.waiting_boolean and self.processing_boolean):
+        if not (self.waiting_boolean and self.processing_boolean):
             self.time_for_finished_order = 0.0
             self.message_string = ""
-            start_time = time.time()
-        elif (self.waiting_boolean or self.processing_boolean):
-            end_time = time.time()
-            duration = end_time - start_time
-            self.time_for_finished_order = duration
-            if duration > 32:   
-                self._update_failure_status()
-                self.message_string = "Order took too long to process"
+            print("I am in 1 if statement")
+            if hasattr(self, "start_time"):
+                delattr(self, "start_time")
+                print("I am in 2 if statement")
+        else:
+            print("I am in 1 else statement")
+            if not hasattr(self, "start_time"):
+                self.start_time = time.time()
+                print("I am in 3 if statement")
+            else:
+                print("I am in 2 if statement")
+                self.end_time = time.time()
+                self.duration = self.end_time - self.start_time
+                self.time_for_finished_order = self.duration
+                if self.duration > 32:   
+                    self._update_failure_status()
+                    self.message_string = "Order took too long to process"
+            delattr(self, "start_time")
         
 
 
