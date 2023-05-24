@@ -75,12 +75,15 @@ class Robot1(RobotLoop):
         while True:
             self.client.wait(0.2)
             if (is_order_waiting(self.parent.cursor)):
+                self.client.wait(0.5) #delay to get database queue
                 data = pop_queue(self.parent.cursor)
+                print(data, type(data))
                 if not(data == None):
                     self.client.wait(0.5) #delay to get database queue
                     local_shape, local_color = match_table_ref_to_robots(data[1])
                     update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "PROCESSING")
                     #Checks if a order has exeeced time limit
+                    self.client.wait(0.5) #delay to get database queue
                     check_order_failed(self.parent.cursor, int(data[0]))
                     #Robot1 needs to start connected conveyor belt and starts to look after possible pickups        
                     self.client.vision_pick(workspace_storage, z_offset, shape=local_shape,
@@ -136,7 +139,9 @@ class Robot0(RobotLoop):
         sensor_pin_id = PinID.DI5
         while True:
             if (is_order_processing(self.parent.cursor)):
+                self.client.wait(0.5) #delay to get database queue
                 data = finished_order(self.parent.cursor)
+                print(data, type(data))
                 if not(data == None):
                     while self.client.digital_read(sensor_pin_id) == PinState.HIGH:
                         self.client.wait(0.2)

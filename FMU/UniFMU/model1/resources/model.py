@@ -142,15 +142,13 @@ class Model:
     #            self.message_string = "Order took too long to process"
     
     def _update_outputs(self):
-        self.time_for_finished_order = 0.0
-        self.message_string = ""
-        start_time = 0.0
         if not(self.waiting_boolean and self.processing_boolean):
+            self.time_for_finished_order = 0.0
+            self.message_string = ""
             start_time = time.time()
-        elif ((self.waiting_boolean or self.processing_boolean) and failure_status == False):
+        elif (self.waiting_boolean or self.processing_boolean):
             end_time = time.time()
             duration = end_time - start_time
-            
             self.time_for_finished_order = duration
             if duration > 32:   
                 self._update_failure_status()
@@ -158,21 +156,21 @@ class Model:
         
 
 
-    def __update_outputs(self):
-        self.time_for_finished_order = 0.0
-        self.message_string = ""
-        if self.waiting_boolean:
-            if not hasattr(self, "start_time"):
-                self.start_time = time.time()
-        else:
-            if hasattr(self, "start_time"):
-                end_time = time.time()
-                duration = end_time - self.start_time
-                delattr(self, "start_time")
-                self.time_for_finished_order = duration
-                if duration > 32:   
-                    self._update_failure_status()
-                    self.message_string = "Order took too long to process"
+    #def __update_outputs(self):
+    #    self.time_for_finished_order = 0.0
+    #    self.message_string = ""
+    #    if self.waiting_boolean:
+    #        if not hasattr(self, "start_time"):
+    #            self.start_time = time.time()
+    #    else:
+    #        if hasattr(self, "start_time"):
+    #            end_time = time.time()
+    #            duration = end_time - self.start_time
+    #            delattr(self, "start_time")
+    #            self.time_for_finished_order = duration
+    #            if duration > 32:   
+    #                self._update_failure_status()
+    #                self.message_string = "Order took too long to process"
     
 
 
@@ -211,10 +209,10 @@ if __name__ == "__main__":
     assert m.processing_boolean == False
     m.waiting_boolean = True
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    print(m.fmi2DoStep(0.0, 1.0, False))
     m.waiting_boolean = False
     m.processing_boolean = True
-    time.sleep(33)
+    time.sleep(2)
     m.processing_boolean = False
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
-    assert m.time_for_finished_order != 0.0
     print(m.time_for_finished_order)

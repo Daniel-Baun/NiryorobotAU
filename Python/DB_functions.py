@@ -121,10 +121,10 @@ def check_order_failed(cursor, id):
             "FROM public.orders "+
             "WHERE id = (SELECT max(id) FROM public.orders)")
     cursor.execute(query)
-    bool_value = cursor.fetchone()
     if(cursor.rowcount == 0):
         return False
     else:
+        bool_value = cursor.fetchone()
         if(bool_value[0]):
             pg.alert(text="Time limit exceeded for order \n Fix system manually and reset the system", title="Order failed", button="OK")
             return True
