@@ -125,9 +125,11 @@ def check_order_failed(cursor, id):
         return False
     else:
         bool_value = cursor.fetchone()
-        if(bool_value[0]):
-            pg.alert(text="Time limit exceeded for order \n Fix system manually and reset the system", title="Order failed", button="OK")
-            return True
+        if(bool_value):
+            if(bool_value[0]):
+                pg.alert(text="Time limit exceeded for order \n Fix system manually and reset the system", title="Order failed", button="OK")
+                return True
+            return False
         return False
     
     
