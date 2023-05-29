@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import re 
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 csvfilename = 'test_copy.csv'
 
@@ -27,7 +28,9 @@ def average_order_time(file_name):
     mean_times = []
     for i in range(1, len(timestamps), 2):
         time_diff = timestamps[i] - timestamps[i-1]
-        mean_times.append(time_diff.total_seconds())
+        time_diff_seconds = time_diff.total_seconds()
+        if time_diff_seconds <= 100:
+            mean_times.append(time_diff_seconds)
 
     return mean_times
     #mean_time = sum(time_differences)/len(time_differences)
@@ -47,7 +50,7 @@ def plot_mean_times(mean_times):
 def plot_mean_times_line(mean_times):
     if mean_times:
         timestamps = range(1, len(mean_times)+1)
-        plt.figure(figsize=(8,6))
+        plt.figure(figsize=(12,6))
         plt.plot(timestamps, mean_times, marker='o')
         plt.axhline(y=sum(mean_times)/len(mean_times), color='r', linestyle='--', label='Mean time for all orders')
         plt.xlabel('Order number')
@@ -55,8 +58,12 @@ def plot_mean_times_line(mean_times):
         plt.title('Time to process orders')
         plt.legend()
         plt.grid(True)
+        mean_time_text = sum(mean_times)/len(mean_times)
+        text = f'Mean time: {mean_time_text:.2f} sec'
+        plt.text(-2, mean_time_text+4, text, color='r', fontsize=10)
+        
         plt.show()
-
+        
 def print_mean_times(mean_times):
     if mean_times:
         for i, mean_time in enumerate(mean_times, start=1):

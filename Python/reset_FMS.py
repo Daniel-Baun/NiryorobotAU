@@ -1,5 +1,4 @@
 from pyniryo import *
-from poses import *
 
 #Helper script to reset the robot positions and stop the conveyors
 

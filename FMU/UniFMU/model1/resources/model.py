@@ -1,13 +1,25 @@
 import pickle
 import time 
 import psycopg2
+import configparser
+import os
 
 class Model:
     def __init__(self) -> None:
         self.waiting_boolean = False
         self.processing_boolean = False
         self.message_string = ""
-        self.DB_conn = psycopg2.connect(database = "main_db", user = "au682915", password = "admin", host = "localhost", port = "5432")
+        self.script_dir = os.path.dirname(os.path.abspath(__file__))
+        self.config_file = os.path.abspath(os.path.join(self.script_dir, 'config.ini'))
+        self.config = configparser.ConfigParser()
+        self.config.read(self.config_file)
+    
+        self.db_name = self.config.get('database', 'db_name')
+        self.user = self.config.get('database', 'user')
+        self.password = self.config.get('database', 'password')
+        self.host = self.config.get('database', 'host')
+        self.port = self.config.get('database', 'port')
+        self.DB_conn = psycopg2.connect(database = self.db_name, user = self.user, password = self.password, host = self.host, port = self.port)
         self.cursor = self.DB_conn.cursor()
 
         self.reference_to_attribute = {
@@ -18,7 +30,7 @@ class Model:
         }
 
         self._update_outputs()
-        self._update_failure_status()
+        # self._update_failure_status()
 
     def fmi2DoStep(self, current_time, step_size, no_step_prior):
         self._update_outputs()
@@ -107,28 +119,63 @@ class Model:
     def _update_failure_status(self):
         query = ("UPDATE public.orders "+
                  "SET failure_status = true "+ 
-                 "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING')")
+                 "WHERE id = (SELECT MIN(id) FROM public.orders WHERE status = 'PROCESSING' AND failure_status = false)")
         self.cursor.execute(query,)
         self.DB_conn.commit()
         return
 
+    #def _update_outputs(self):
+    #    global start_time
+    #    self.time_for_finished_order = 0.0
+    #    self.message_string = ""
+    #    if self.waiting_boolean and 'start_time' not in globals():
+    #        start_time = time.time()
+    #        print("I am in if statement")
+    #    elif not self.waiting_boolean and not self.processing_boolean and 'start_time' in globals():
+    #        print("I am in elif statement")
+    #        end_time = time.time()
+    #        duration = end_time - start_time
+    #        del globals()['start_time']
+    #        self.time_for_finished_order = duration
+    #        if duration > 32:   
+    #            self._update_failure_status()
+    #            self.message_string = "Order took too long to process"
+    
     def _update_outputs(self):
         global start_time
         self.time_for_finished_order = 0.0
         self.message_string = ""
-        if self.waiting_boolean and 'start_time' not in globals():
-            start_time = time.time()
-            print("I am in if statement")
-        elif not self.waiting_boolean and not self.processing_boolean and 'start_time' in globals():
-            print("I am in elif statement")
-            end_time = time.time()
-            duration = end_time - start_time
-            del globals()['start_time']
-            self.time_for_finished_order = duration
-            if duration > 32:
-                self._update_failure_status()
-                self.message_string = "Order took too long to process"
-            
+        if (self.waiting_boolean and not self.processing_boolean) or (not self.waiting_boolean and not self.processing_boolean):
+                start_time = time.time()
+        else:
+            if 'start_time' in globals():
+                end_time = time.time()
+                duration = end_time - start_time
+                self.time_for_finished_order = duration
+                if duration > 32:   
+                    self._update_failure_status()
+                    self.message_string = "Order took too long to process"
+
+
+        
+
+
+    #def __update_outputs(self):
+    #    self.time_for_finished_order = 0.0
+    #    self.message_string = ""
+    #    if self.waiting_boolean:
+    #        if not hasattr(self, "start_time"):
+    #            self.start_time = time.time()
+    #    else:
+    #        if hasattr(self, "start_time"):
+    #            end_time = time.time()
+    #            duration = end_time - self.start_time
+    #            delattr(self, "start_time")
+    #            self.time_for_finished_order = duration
+    #            if duration > 32:   
+    #                self._update_failure_status()
+    #                self.message_string = "Order took too long to process"
+    
 
 
 
@@ -161,16 +208,33 @@ class Fmi2Status:
 
 if __name__ == "__main__":
     m = Model()
-    assert m.time_for_finished_order == 0.0
+    print(m.time_for_finished_order)
     assert m.waiting_boolean == False
     assert m.processing_boolean == False
-    
+    assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     m.waiting_boolean = True
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
     m.waiting_boolean = False
     m.processing_boolean = True
-    time.sleep(33)
-    m.processing_boolean = False
+    time.sleep(2)
     assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
-    assert m.time_for_finished_order != 0.0
     print(m.time_for_finished_order)
+    time.sleep(3)
+    assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    print(m.time_for_finished_order)
+    m.waiting_boolean = False
+    m.processing_boolean = False
+    assert m.waiting_boolean == False
+    assert m.processing_boolean == False
+    assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    m.waiting_boolean = True
+    assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    m.waiting_boolean = False
+    m.processing_boolean = True
+    time.sleep(2)
+    assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    print(m.time_for_finished_order)
+    time.sleep(3)
+    assert m.fmi2DoStep(0.0, 1.0, False) == Fmi2Status.ok
+    print(m.time_for_finished_order)
+    
