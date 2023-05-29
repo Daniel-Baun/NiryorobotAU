@@ -15,3 +15,7 @@ check it works in the terminal
 run ```python3 odoo-bin -d main_db``` to start the database named main_db with odoo
 
 pop_queue gives error 
+
+## Setup the system
+[1] Tooling
+Start mhy setting up a PC with linux installed with version xx.xx. Then you should
