@@ -6,7 +6,7 @@ import configparser
 
 #The user needs to input database name, user name, password, host and port in config.ini
 config = configparser.ConfigParser()
-config.read('config.ini')
+config.read('credentials.ini')
 
 db_name = config.get('database', 'db_name')
 user = config.get('database', 'user')
