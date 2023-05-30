@@ -148,11 +148,11 @@ def change_text_box_blue_cir():
 
 #Making the buttons for the products
 button_green_rectangle = ct.CTkButton(master=root, text="Rectangle", font=("Roboto", 20),fg_color="green",  command=change_text_box_green_rec)
-button_green_circle = ct.CTkButton(master=root, text="Circle", font=("Roboto", 20),fg_color="green", command=change_text_box_green_cir)
+button_green_circle = ct.CTkButton(master=root, text="Circle", font=("Roboto", 20),fg_color="green",corner_radius=40, command=change_text_box_green_cir)
 button_red_rectangle = ct.CTkButton(master=root, text="Rectangle", font=("Roboto", 20),fg_color="blue", command=change_text_box_blue_rec)
-button_red_circle = ct.CTkButton(master=root, text="Circle", font=("Roboto", 20),fg_color="blue", command=change_text_box_blue_cir)
+button_red_circle = ct.CTkButton(master=root, text="Circle", font=("Roboto", 20),fg_color="blue",corner_radius=40, command=change_text_box_blue_cir)
 button_blue_rectangle = ct.CTkButton(master=root, text="Rectangle", font=("Roboto", 20),fg_color="red", command=change_text_box_red_rec)
-button_blue_circle = ct.CTkButton(master=root, text="Circle", font=("Roboto", 20),fg_color="red", command=change_text_box_red_cir)
+button_blue_circle = ct.CTkButton(master=root, text="Circle", font=("Roboto", 20),fg_color="red", corner_radius=40, command=change_text_box_red_cir)
 button_send_order = ct.CTkButton(master=root, text="Send Order", font=("Roboto", 20),fg_color="white", command=send_order, text_color="black")
 
 text_box.grid(row=0, column=0, sticky="we", padx=(10,0), pady=(10,0))
