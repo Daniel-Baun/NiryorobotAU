@@ -21,6 +21,7 @@ cur = connection.cursor()
 #Create the GUI
 root = ct.CTk()
 root.geometry("500x500")
+root.title("Product ordering system")
 ct.set_appearance_mode("dark")
 text_box = ct.CTkTextbox(master=root, font=("Roboto", 20), width=300, height=70)
 
