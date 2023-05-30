@@ -5,16 +5,15 @@ from threading import Lock, Thread
 from pyniryo import *
 from settings import * 
 from DB_functions import *
-from time_func import *
+from time__to_csv import *
 import configparser
-import atexit
 
 conveyor_id = ConveyorID.ID_1
 
 class RobotsMains:
     def __init__(self, robot1, robot0, workspace, saved_joints_poses, DB_conn):
         self.saved_joints_poses = saved_joints_poses
-
+        # Allows the controller to know the robots
         self.client1 = robot1
         self.client2 = robot0
 
@@ -63,7 +62,6 @@ class RobotLoop(Thread):
 class Robot1(RobotLoop):
     def __init__(self, client, parent, workspace):
         super().__init__(client, parent)
-
         self.workspace = workspace
 
     def robot_loop(self):
@@ -72,45 +70,55 @@ class Robot1(RobotLoop):
         self.client.release_with_tool()
        
         self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
+        #Main control loop
         while True:
             self.client.wait(0.2)
             if (is_order_waiting(self.parent.cursor)):
                 self.client.wait(0.5) #delay to get database queue
-                data = pop_queue(self.parent.cursor)
-                print(data, type(data))
+                data = pop_queue(self.parent.cursor) #gets the first order in the queue
                 if not(data == None):
                     self.client.wait(0.5) #delay to get database queue
-                    local_shape, local_color = match_table_ref_to_robots(data[1])
-                    update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "PROCESSING")
-                    #Checks if a order has exeeced time limit
+                    local_shape, local_color = match_table_ref_to_robots(data[1]) # Creates pinyrio object from database query
+                    update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "PROCESSING") #Updates the order status to processing
                     self.client.wait(0.5) #delay to get database queue
+                    
+                    #Check if an order has failed by exeeding the time limit
                     check_order_failed(self.parent.cursor, int(data[0]))
+                    
                     #Robot1 needs to start connected conveyor belt and starts to look after possible pickups        
                     self.client.vision_pick(workspace_storage, z_offset, shape=local_shape,
                                                                 color=local_color)
+                    #Save the time when the robot has picked up the order
                     write_time_to_csv(csvfilename)
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))
+                    
                     print("Robot1 | going over Conveyor ")
                     self.client.move_joints(*self.saved_joints_poses["client1_intermediate_pos"])
-                    print("Robot1 | dropping pawn ")
+                   
                     check_order_failed(self.parent.cursor, int(data[0]))
-                    self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client1"])  # drop
-                    self.client.release_with_tool()
-                    print("locked robot1 ", {self.conveyor_lock.locked()})
-                    check_order_failed(self.parent.cursor, int(data[0]))    
+                    
+                    print("Robot1 | dropping pawn ")
+                    self.client.move_joints(*self.saved_joints_poses["drop_positions_of_client1"])
+                    self.client.release_with_tool() # Drops order on conveyor belt
+                    
+                    check_order_failed(self.parent.cursor, int(data[0]))  
+                      
                     self.conveyor_lock.acquire() # locks use of conveyorbelt for others
-                    print("is locked robot1 ", {self.conveyor_lock.locked()})
+                    
 
                     self.parent.conveyor_controller(100) # start conveyor belt
                     check_order_failed(self.parent.cursor, int(data[0]))
                     self.conveyor_lock.release() # unlocks use of conveyor for others
-                    print("unlocked robot1 ", {self.conveyor_lock.locked()})
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))
 
+                    #Wait 10 seconds for the order to be picked up by robot0
                     for i in range(10):
                         self.client.wait(1)
                         check_order_failed(self.parent.cursor, int(data[0]))
-
+                    
+                    #Go back to observation pose
                     self.client.move_joints(*self.saved_joints_poses["client1_observation_pose"])
                     check_order_failed(self.parent.cursor, int(data[0]))
 
@@ -127,6 +135,7 @@ class Robot0(RobotLoop):
 
     def modulo_place_pos(self):
         # iterate over the 9 possible positions using modulo and incrementing the placement_counter
+        # thereby placing orders in a grid pattern
         if self.placement_counter%9 == 0:
             self.placement_counter = 0
         self.client.move_joints(self.saved_joints_poses[f"drop_position_{self.placement_counter}_robot0"])
@@ -137,38 +146,51 @@ class Robot0(RobotLoop):
         self.client.update_tool()
         self.client.release_with_tool()
         sensor_pin_id = PinID.DI5
+        
+        #Robot0 control loop
         while True:
             if (is_order_processing(self.parent.cursor)):
                 self.client.wait(0.5) #delay to get database queue
                 data = finished_order(self.parent.cursor)
-                print(data, type(data))
                 if not(data == None):
+                    #Wait for order to pass IR sensor
                     while self.client.digital_read(sensor_pin_id) == PinState.HIGH:
                         self.client.wait(0.2)
                     self.client.wait(0.8)
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))
-                    print("Counter is: ", self.placement_counter)
-                    print("locked robot0 ", {self.conveyor_lock.locked()})    
+                    
+                        
                     self.conveyor_lock.acquire()
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))
-                    print("is locked robot0 ", {self.conveyor_lock.locked()})
+                    
                     self.parent.conveyor_controller(0)
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))
+                    
                     self.client.move_joints(*self.saved_joints_poses["pick_positions_of_client2"])
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))
+                    
                     self.client.grasp_with_tool()
                     self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))
+                    
                     self.modulo_place_pos()
                     self.client.release_with_tool()
 
                     self.conveyor_lock.release()
-                    print("unlocked robot0 ", {self.conveyor_lock.locked()})
+                    
                     check_order_failed(self.parent.cursor, int(data[0]))    
-                    print(data, type(data))
+                    
+                    #Update order status to done
                     update_order_status(self.parent.cursor, self.parent.DB_conn, int(data[0]), "DONE")
+                    #Write time of order completion to csv file
                     write_time_to_csv(csvfilename)
                     self.client.wait(0.2)
+                    
                     self.client.move_joints(self.saved_joints_poses["client2_intermediate_pos"])
         
 # - Initialize positions
@@ -273,10 +295,9 @@ def load_yaml(path_):
         print("Empty or missing file: {}".format(path_))
         return {}
 
+
 def main_robot(db_name, user, password, host, port):
-    print("I get here 1")
     saved_joint_poses = load_saved_joint_poses()  # load all the robots poses
-    print("I get here 2")
     client1.release_with_tool()
     client2.release_with_tool()
 
@@ -326,11 +347,10 @@ if __name__ == '__main__':
 
     client1.update_tool()
     client2.update_tool()
-    print("I get here 0")
 
     #The user needs to input database name, user name, password, host and port in config.ini
     config = configparser.ConfigParser()
-    config.read('config.ini')
+    config.read('credentials.ini') # File for the user to specify what database to connect to
     
     db_name = config.get('database', 'db_name')
     user = config.get('database', 'user')
@@ -339,17 +359,3 @@ if __name__ == '__main__':
     port = config.get('database', 'port')
     
     main_robot(db_name, user, password, host, port)
-
-#Note to myself
-
-#self.client1.control_conveyor #ændre client1 til parameter
-#best possible vision settings when starting
-#add gracefull killer
-#optimize time to pickup between robots
-#Add antal orderer, så vi bruger no_product til fetch funktionen
-#Turn and use height ?
-
-#Done
-#Rette pick position for robot0 på con1
-#randomize placearea - placearea is now in a 3x3 box
-#add check connetion robotloop1 med kun connection og ikke credentials på logindb_name = input("Enter the database name: ")
