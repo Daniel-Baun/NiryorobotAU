@@ -46,7 +46,7 @@ Click "New" and create 6 new products using the table below<br>
  1. Fill in "Product name"
  2. Fill in "Internal reference"
  3. Click "New"
-   
+   ![alt text](https://github.com/Daniel-Baun/NiryorobotAU/blob/master/Figures/Screenshot%20from%202023-06-01%2013-25-58.png?raw=true)
 | Product name    | Internal reference |
 |-----------------|--------------------|
 | Green Rectangle | GR01               |
