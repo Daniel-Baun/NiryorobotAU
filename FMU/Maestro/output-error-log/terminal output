@@ -1,0 +1,437 @@
+08:39:38.751 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:38.751 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:38.848 [Thread-2230] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:38.846', '{"time": "2023-06-06T08:39:38.846+02:00", "waiting": false, "processing": false}', '1686033578848624447'
+08:39:38.849 [Thread-2231] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:38.849 [Thread-2232] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:38.849 [Thread-2233] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:38.849 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:38.849 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38000 [ms]
+08:39:38.849 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:38.854 [Thread-2234] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:38.854 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:38.855 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.100000 s converted time 38100.000000 ms
+08:39:38.855 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:38.855+00:00"}
+08:39:38.855 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:38.855 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:38.949 [Thread-2235] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:38.947', '{"time": "2023-06-06T08:39:38.947+02:00", "waiting": false, "processing": false}', '1686033578949634574'
+08:39:38.950 [Thread-2236] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:38.950 [Thread-2237] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:38.950 [Thread-2238] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:38.950 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:38.950 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38100 [ms]
+08:39:38.950 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:38.953 [Thread-2239] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:38.953 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:38.954 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.200000 s converted time 38200.000000 ms
+08:39:38.954 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:38.954+00:00"}
+08:39:38.954 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:38.954 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.051 [Thread-2240] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.048', '{"time": "2023-06-06T08:39:39.048+02:00", "waiting": false, "processing": false}', '1686033579051393578'
+08:39:39.051 [Thread-2241] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.052 [Thread-2242] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.052 [Thread-2243] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.052 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.052 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38200 [ms]
+08:39:39.052 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.057 [Thread-2244] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.057 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.058 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.300000 s converted time 38300.000000 ms
+08:39:39.058 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.058+00:00"}
+08:39:39.059 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.061 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.152 [Thread-2245] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.149', '{"time": "2023-06-06T08:39:39.149+02:00", "waiting": false, "processing": false}', '1686033579152132899'
+08:39:39.152 [Thread-2246] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.152 [Thread-2247] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.152 [Thread-2248] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.152 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.152 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38300 [ms]
+08:39:39.152 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.154 [Thread-2249] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.155 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.155 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.400000 s converted time 38400.000000 ms
+08:39:39.159 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.159+00:00"}
+08:39:39.159 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.159 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.253 [Thread-2250] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.250', '{"time": "2023-06-06T08:39:39.250+02:00", "waiting": false, "processing": false}', '1686033579253057749'
+08:39:39.253 [Thread-2251] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.253 [Thread-2252] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.253 [Thread-2253] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.253 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.253 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38400 [ms]
+08:39:39.253 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.255 [Thread-2254] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.256 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.256 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.500000 s converted time 38500.000000 ms
+08:39:39.256 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.256+00:00"}
+08:39:39.256 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.271 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.353 [Thread-2255] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.351', '{"time": "2023-06-06T08:39:39.351+02:00", "waiting": false, "processing": false}', '1686033579353272039'
+08:39:39.353 [Thread-2256] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.353 [Thread-2257] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.354 [Thread-2258] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.354 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.354 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38500 [ms]
+08:39:39.354 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.355 [Thread-2259] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.356 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.356 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.600000 s converted time 38600.000000 ms
+08:39:39.357 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.357+00:00"}
+08:39:39.357 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.357 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.454 [Thread-2260] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.452', '{"time": "2023-06-06T08:39:39.452+02:00", "waiting": false, "processing": false}', '1686033579454130919'
+08:39:39.454 [Thread-2261] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.454 [Thread-2262] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.454 [Thread-2263] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.454 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.455 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38600 [ms]
+08:39:39.455 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.456 [Thread-2264] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.457 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.457 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.700000 s converted time 38700.000000 ms
+08:39:39.457 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.457+00:00"}
+08:39:39.457 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.457 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.555 [Thread-2265] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.556 [Thread-2266] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.553', '{"time": "2023-06-06T08:39:39.553+02:00", "waiting": false, "processing": false}', '1686033579556025857'
+08:39:39.556 [Thread-2267] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.556 [Thread-2268] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.556 [Thread-2269] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.556 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.556 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38700 [ms]
+08:39:39.556 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.557 [Thread-2270] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.558 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.558 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.800000 s converted time 38800.000000 ms
+08:39:39.559 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.559+00:00"}
+08:39:39.559 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.559 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.657 [Thread-2271] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.661 [Thread-2272] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.654', '{"time": "2023-06-06T08:39:39.654+02:00", "waiting": false, "processing": false}', '1686033579661122232'
+08:39:39.661 [Thread-2273] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.661 [Thread-2274] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.661 [Thread-2275] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.661 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.662 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38800 [ms]
+08:39:39.662 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.663 [Thread-2276] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.664 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.664 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 38.900000 s converted time 38900.000000 ms
+08:39:39.664 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.664+00:00"}
+08:39:39.664 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.664 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.762 [Thread-2277] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.759', '{"time": "2023-06-06T08:39:39.759+02:00", "waiting": false, "processing": false}', '1686033579762011272'
+08:39:39.762 [Thread-2278] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.762 [Thread-2279] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.762 [Thread-2280] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.762 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.762 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 38900 [ms]
+08:39:39.762 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.764 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.764 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.000000 s converted time 39000.000000 ms
+08:39:39.764 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.764+00:00"}
+08:39:39.764 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.764 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.764 [Thread-2281] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.863 [Thread-2282] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.860', '{"time": "2023-06-06T08:39:39.860+02:00", "waiting": false, "processing": false}', '1686033579863019855'
+08:39:39.863 [Thread-2283] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.863 [Thread-2284] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.863 [Thread-2285] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.863 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.863 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39000 [ms]
+08:39:39.863 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.865 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.865 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.100000 s converted time 39100.000000 ms
+08:39:39.865 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.865+00:00"}
+08:39:39.865 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.866 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.865 [Thread-2286] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:39.964 [Thread-2287] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:39.961', '{"time": "2023-06-06T08:39:39.961+02:00", "waiting": false, "processing": false}', '1686033579963871748'
+08:39:39.964 [Thread-2288] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:39.964 [Thread-2289] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:39.964 [Thread-2290] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:39.964 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:39.964 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39100 [ms]
+08:39:39.964 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:39.966 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:39.966 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.200000 s converted time 39200.000000 ms
+08:39:39.966 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:39.966+00:00"}
+08:39:39.966 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:39.966 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:39.966 [Thread-2291] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.065 [Thread-2292] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.062', '{"time": "2023-06-06T08:39:40.062+02:00", "waiting": false, "processing": false}', '1686033580064851980'
+08:39:40.065 [Thread-2293] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.065 [Thread-2294] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.065 [Thread-2295] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.065 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.065 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39200 [ms]
+08:39:40.065 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.067 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.067 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.300000 s converted time 39300.000000 ms
+08:39:40.067 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.067+00:00"}
+08:39:40.067 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.067 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.067 [Thread-2296] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.165 [Thread-2297] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.163', '{"time": "2023-06-06T08:39:40.163+02:00", "waiting": false, "processing": false}', '1686033580165660378'
+08:39:40.166 [Thread-2298] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.166 [Thread-2299] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.166 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.166 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39300 [ms]
+08:39:40.166 [Thread-2300] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.166 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.167 [Thread-2301] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.168 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.168 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.400000 s converted time 39400.000000 ms
+08:39:40.168 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.168+00:00"}
+08:39:40.168 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.168 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.267 [Thread-2302] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.270 [Thread-2303] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.264', '{"time": "2023-06-06T08:39:40.264+02:00", "waiting": false, "processing": false}', '1686033580270602601'
+08:39:40.270 [Thread-2304] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.271 [Thread-2305] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.271 [Thread-2306] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.271 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.271 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39400 [ms]
+08:39:40.271 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.272 [Thread-2307] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.273 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.273 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.500000 s converted time 39500.000000 ms
+08:39:40.273 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.273+00:00"}
+08:39:40.273 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.273 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.371 [Thread-2308] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.369', '{"time": "2023-06-06T08:39:40.369+02:00", "waiting": true, "processing": false}', '1686033580371350009'
+08:39:40.371 [Thread-2309] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.371 [Thread-2310] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.371 [Thread-2311] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.372 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.372 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39500 [ms]
+08:39:40.372 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.373 [Thread-2312] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.377 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.377 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.600000 s converted time 39600.000000 ms
+08:39:40.377 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.377+00:00"}
+08:39:40.378 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.378 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39600 [ms]
+08:39:40.378 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 1 FmuContainer::step ***************
+08:39:40.386 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.386 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.700000 s converted time 39700.000000 ms
+08:39:40.386 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.386+00:00"}
+08:39:40.386 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.386 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.472 [Thread-2313] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.473 [Thread-2314] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.470', '{"time": "2023-06-06T08:39:40.470+02:00", "waiting": true, "processing": false}', '1686033580473248978'
+08:39:40.473 [Thread-2315] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.473 [Thread-2316] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.473 [Thread-2317] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.473 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.473 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39700 [ms]
+08:39:40.473 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.475 [Thread-2318] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.476 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.476 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.800000 s converted time 39800.000000 ms
+08:39:40.476 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.476+00:00"}
+08:39:40.476 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.476 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.574 [Thread-2319] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.578 [Thread-2320] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.572', '{"time": "2023-06-06T08:39:40.572+02:00", "waiting": true, "processing": false}', '1686033580578092589'
+08:39:40.578 [Thread-2321] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.578 [Thread-2322] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.578 [Thread-2323] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.578 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.578 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39800 [ms]
+08:39:40.578 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.580 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.580 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 39.900000 s converted time 39900.000000 ms
+08:39:40.580 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.580+00:00"}
+08:39:40.580 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.580 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.580 [Thread-2324] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.675 [Thread-2325] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.673', '{"time": "2023-06-06T08:39:40.673+02:00", "waiting": true, "processing": false}', '1686033580675120799'
+08:39:40.675 [Thread-2326] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.675 [Thread-2327] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.676 [Thread-2328] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.675 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.676 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 39900 [ms]
+08:39:40.676 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.677 [Thread-2329] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.678 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.678 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.000000 s converted time 40000.000000 ms
+08:39:40.678 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.678+00:00"}
+08:39:40.678 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.678 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.777 [Thread-2330] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.774', '{"time": "2023-06-06T08:39:40.774+02:00", "waiting": true, "processing": false}', '1686033580776947973'
+08:39:40.777 [Thread-2331] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.777 [Thread-2332] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.777 [Thread-2333] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.777 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.777 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40000 [ms]
+08:39:40.777 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.778 [Thread-2334] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.779 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.780 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.100000 s converted time 40100.000000 ms
+08:39:40.780 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.780+00:00"}
+08:39:40.780 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.780 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.877 [Thread-2335] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.875', '{"time": "2023-06-06T08:39:40.875+02:00", "waiting": true, "processing": false}', '1686033580877717616'
+08:39:40.878 [Thread-2336] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.878 [Thread-2337] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.878 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.878 [Thread-2338] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.879 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40100 [ms]
+08:39:40.879 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.881 [Thread-2339] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.882 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.883 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.200000 s converted time 40200.000000 ms
+08:39:40.883 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.883+00:00"}
+08:39:40.883 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.883 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:40.979 [Thread-2340] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:40.976', '{"time": "2023-06-06T08:39:40.976+02:00", "waiting": true, "processing": false}', '1686033580979128449'
+08:39:40.979 [Thread-2341] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:40.979 [Thread-2342] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:40.979 [Thread-2343] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:40.979 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:40.980 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40200 [ms]
+08:39:40.980 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:40.981 [Thread-2344] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:40.982 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:40.982 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.300000 s converted time 40300.000000 ms
+08:39:40.982 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:40.982+00:00"}
+08:39:40.982 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:40.982 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.080 [Thread-2345] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.077', '{"time": "2023-06-06T08:39:41.077+02:00", "waiting": true, "processing": false}', '1686033581079906831'
+08:39:41.080 [Thread-2346] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.080 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.080 [Thread-2347] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.080 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40300 [ms]
+08:39:41.080 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.080 [Thread-2348] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.081 [Thread-2349] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.082 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.082 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.400000 s converted time 40400.000000 ms
+08:39:41.082 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.082+00:00"}
+08:39:41.082 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.082 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.181 [Thread-2350] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.178', '{"time": "2023-06-06T08:39:41.178+02:00", "waiting": true, "processing": false}', '1686033581180854902'
+08:39:41.181 [Thread-2351] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.181 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.181 [Thread-2352] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.181 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40400 [ms]
+08:39:41.181 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.181 [Thread-2353] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.183 [Thread-2354] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.183 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.183 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.500000 s converted time 40500.000000 ms
+08:39:41.183 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.183+00:00"}
+08:39:41.183 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.183 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.281 [Thread-2355] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.279', '{"time": "2023-06-06T08:39:41.279+02:00", "waiting": true, "processing": false}', '1686033581281629828'
+08:39:41.282 [Thread-2356] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.282 [Thread-2357] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.282 [Thread-2358] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.282 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.282 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40500 [ms]
+08:39:41.282 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.283 [Thread-2359] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.283 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.284 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.600000 s converted time 40600.000000 ms
+08:39:41.284 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.284+00:00"}
+08:39:41.287 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.289 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.382 [Thread-2360] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.380', '{"time": "2023-06-06T08:39:41.380+02:00", "waiting": true, "processing": false}', '1686033581382031046'
+08:39:41.382 [Thread-2361] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.382 [Thread-2362] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.382 [Thread-2363] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.382 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.382 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40600 [ms]
+08:39:41.382 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.383 [Thread-2364] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.384 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.384 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.700000 s converted time 40700.000000 ms
+08:39:41.384 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.384+00:00"}
+08:39:41.384 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.384 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.483 [Thread-2365] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.483 [Thread-2366] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.481', '{"time": "2023-06-06T08:39:41.481+02:00", "waiting": false, "processing": true}', '1686033581483718717'
+08:39:41.484 [Thread-2367] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.484 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.484 [Thread-2368] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.484 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40700 [ms]
+08:39:41.484 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.484 [Thread-2369] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.485 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.485 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.800000 s converted time 40800.000000 ms
+08:39:41.485 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.485+00:00"}
+08:39:41.485 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.486 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.486 [Thread-2370] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.584 [Thread-2371] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.582', '{"time": "2023-06-06T08:39:41.582+02:00", "waiting": false, "processing": true}', '1686033581583945425'
+08:39:41.584 [Thread-2372] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.584 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.584 [Thread-2373] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.585 [Thread-2374] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.584 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40800 [ms]
+08:39:41.585 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.586 [Thread-2375] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.587 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.587 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 40.900000 s converted time 40900.000000 ms
+08:39:41.588 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.587+00:00"}
+08:39:41.588 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.588 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.686 [Thread-2376] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.692 [Thread-2377] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.683', '{"time": "2023-06-06T08:39:41.683+02:00", "waiting": false, "processing": true}', '1686033581692129019'
+08:39:41.692 [Thread-2378] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.692 [Thread-2379] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.692 [Thread-2380] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.692 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.692 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 40900 [ms]
+08:39:41.692 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.694 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.694 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 41.000000 s converted time 41000.000000 ms
+08:39:41.694 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.694+00:00"}
+08:39:41.694 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.694 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.695 [Thread-2381] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.786 [Thread-2382] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.784', '{"time": "2023-06-06T08:39:41.784+02:00", "waiting": false, "processing": true}', '1686033581786443090'
+08:39:41.786 [Thread-2383] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.786 [Thread-2384] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '1'
+08:39:41.787 [Thread-2385] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Queue_size '1' over the limit '17'. Sleep for 1ms 
+08:39:41.787 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.787 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 41000 [ms]
+08:39:41.787 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+08:39:41.788 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.788 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 41.100000 s converted time 41100.000000 ms
+08:39:41.788 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.788+00:00"}
+08:39:41.789 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.789 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+08:39:41.788 [Thread-2386] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: queue size '0'
+08:39:41.887 [Thread-2387] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: Got data '2023-06-06 08:39:41.885', '{"time": "2023-06-06T08:39:41.885+02:00", "waiting": false, "processing": true}', '1686033581887616085'
+08:39:41.888 [Thread-2388] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logWarn', message: unlocked ''
+08:39:41.888 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: [health data] Ignoring (either bad json or own message): 
+08:39:41.888 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step reached target time 41100 [ms]
+08:39:41.888 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Exit 2 FmuContainer::step ***************
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f638f4c6533, pid=98176, tid=98241
+#
+# JRE version: OpenJDK Runtime Environment (11.0.19+7) (build 11.0.19+7-post-Ubuntu-0ubuntu122.04.1)
+# Java VM: OpenJDK 64-Bit Server VM (11.0.19+7-post-Ubuntu-0ubuntu122.04.1, mixed mode, sharing, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libstdc++.so.6+0xc6533]  std::_Rb_tree_increment(std::_Rb_tree_node_base*)+0x13
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -- %E" (or dumping to /home/au682915/Bachelor/Code/FMU/Maestro/core.98176)
+#
+# An error report file with more information is saved as:
+# /home/au682915/Bachelor/Code/FMU/Maestro/hs_err_pid98176.log
+08:39:41.894 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: ************ Enter FmuContainer::step ***************
+08:39:41.894 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Step time 41.200000 s converted time 41200.000000 ms
+08:39:41.894 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Sending to rabbitmq: COSIM TIME: {"simAtTime":"2023-06-06T06:39:41.894+00:00"}
+08:39:41.894 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logAll', message: Send enabled on this step, for message 
+08:39:41.894 [main] INFO  org.intocps.maestro.interpreter.Interpreter - NATIVE: instance: 'RabbitMQFMU', status: 'OK', category: 'logOk', message: locked''
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugs.launchpad.net/ubuntu/+source/openjdk-lts
+#
+Opened channel with ID: 2Aborted (core dumped)
+au682915@d52283:~/Bachelor/Code/FMU/Maestro$ 
+
+

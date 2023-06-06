@@ -5,7 +5,7 @@ from threading import Lock, Thread
 from pyniryo import *
 from settings import * 
 from DB_functions import *
-from time__to_csv import *
+from time_to_csv import *
 import configparser
 
 conveyor_id = ConveyorID.ID_1
