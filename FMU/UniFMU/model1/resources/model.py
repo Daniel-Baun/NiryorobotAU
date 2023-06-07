@@ -10,7 +10,7 @@ class Model:
         self.processing_boolean = False
         self.message_string = ""
         self.script_dir = os.path.dirname(os.path.abspath(__file__))
-        self.config_file = os.path.abspath(os.path.join(self.script_dir, 'config.ini'))
+        self.config_file = os.path.abspath(os.path.join(self.script_dir, 'credentials.ini'))
         self.config = configparser.ConfigParser()
         self.config.read(self.config_file)
     
