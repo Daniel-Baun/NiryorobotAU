@@ -24,7 +24,7 @@ In the end the following should be installed:
 ### **Network settings**
 To ensure the robots in your setup have static ip adresses, you need to enable some settings in the linux options.
 Follow this guide, and use the Niryo manual to see how it can be changed.
-[Static IP]()
+[Static IP](https://www.tomshardware.com/how-to/static-ip-raspberry-pi )
 
 ### **PostgreSQL**
 [Install](https://www.pgadmin.org/download/pgadmin-4-apt/) the web version of pgAdmin for PostgreSQL<br>
