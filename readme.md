@@ -1,8 +1,8 @@
 # Bachelor thesis in Flexible Manufacturing into Digital Twins.
 This repository serves as the codebase for the bachelor thesis in Flexible Manufacturing into Digital Twins<br>
 The group members are:
-- Daniel Baun Olesen
-- Rasmus Maarssø Carlsen
+- [Daniel Baun Olesen](https://github.com/Daniel-Baun)
+- [Rasmus Maarssø Carlsen](https://github.com/Rasmus-M-C)
 ## User installation guide
 ### **Odoo installation**
 Go to [Odoo download](https://www.odoo.com/documentation/16.0/administration/install/install.html) <br>
