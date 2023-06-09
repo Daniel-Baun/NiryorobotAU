@@ -1,4 +1,9 @@
-# User installation guide
+# Bachelor thesis in Flexible Manufacturing into Digital Twins.
+This repository serves as the codebase for the bachelor thesis in Flexible Manufacturing into Digital Twins
+The group members are:
+- Daniel Baun Olesen
+- Rasmus Maarssø Carlsen
+## User installation guide
 ### **Odoo installation**
 Go to [Odoo download](https://www.odoo.com/documentation/16.0/administration/install/install.html) <br>
 Follow the installation guide on the site, from the section **Source install**
@@ -9,10 +14,11 @@ python3 odoo-bin --without-demo=all -d {database name}
 ```
 
 <br>
-In the end the follwing things should be installed:
--pip
--PostgreSQL
--Odoo
+In the end the following should be installed:
+
+- pip
+- PostgreSQL
+- Odoo
 
 
 ### **Network settings**
@@ -62,6 +68,13 @@ Click "New" and create 6 new products using the table below<br>
 
 
 
-### **Java**
-[Install](https://www.java.com/en/download/help/linux_x64_install.html#download) java for Maestro
 
+### **UniFMU**
+Install UniFMU using their [repository](https://github.com/INTO-CPS-Association/unifmu)
+
+### **Maestro**
+Install Maestro using their [repository](https://github.com/INTO-CPS-Association/maestro) <br>
+Install [Java](https://www.java.com/en/download/help/linux_x64_install.html#download)  for running Maestro
+
+### **RabbitMQFMU**
+Install RabbitMQFMU using their [repository](https://github.com/INTO-CPS-Association/fmu-rabbitmq)
