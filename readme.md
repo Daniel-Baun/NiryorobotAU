@@ -1,5 +1,5 @@
 # Bachelor thesis in Flexible Manufacturing into Digital Twins.
-This repository serves as the codebase for the bachelor thesis in Flexible Manufacturing into Digital Twins
+This repository serves as the codebase for the bachelor thesis in Flexible Manufacturing into Digital Twins<br>
 The group members are:
 - Daniel Baun Olesen
 - Rasmus Maarssø Carlsen
