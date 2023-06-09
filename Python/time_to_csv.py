@@ -5,7 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-csvfilename = 'New_incr.csv'
+csvfilename = 'test_copy.csv'
 
 def write_time_to_csv(csvfilename):
     
@@ -39,7 +39,7 @@ def calculate_standard_deviation(mean_times):
     if mean_times:
         return np.std(mean_times)
 
-def plot_mean_times_line(mean_times):
+def plot_mean_times_line(mean_times, iterations):
     if mean_times:
         timestamps = range(1, len(mean_times) + 1)
         plt.figure(figsize=(12, 6))
@@ -53,10 +53,14 @@ def plot_mean_times_line(mean_times):
         std_dev_text = calculate_standard_deviation(mean_times)
         plt.axhline(y=mean_time_text + std_dev_text, color='g', linestyle='dashdot', label='Mean time ± standard deviation')
         plt.axhline(y=mean_time_text - std_dev_text, color='g', linestyle='dashdot')
+        # Add vertical lines at every 25 x-axis interval
+        for i, iteration in enumerate(iterations, 1):
+            plt.axvline(x=iteration, color='b', linestyle=':', label=f'Version {i+1}')
+            plt.text(iteration+3, np.max(mean_times)-40, f'Version {i+1}', rotation=90, va='bottom')
 
-        plt.text(0, mean_time_text+0.05, f'Mean time: {mean_time_text:.2f} sec', color='r')
-        plt.text(0, mean_time_text+0.05 + std_dev_text, f'Mean time + std deviation: {mean_time_text + std_dev_text:.2f} sec', color='g')
-        plt.text(0, mean_time_text+0.05 - std_dev_text, f'Mean time - std deviation: {mean_time_text - std_dev_text:.2f} sec', color='g')
+        plt.text(0, mean_time_text+5, f'Mean time: {mean_time_text:.2f} sec', color='r')
+        plt.text(0, mean_time_text+4 + std_dev_text, f'Mean time + std deviation: {mean_time_text + std_dev_text:.2f} sec', color='g')
+        plt.text(0, mean_time_text-5 - std_dev_text, f'Mean time - std deviation: {mean_time_text - std_dev_text:.2f} sec', color='g')
         plt.legend()
         plt.show()
 
@@ -64,6 +68,7 @@ def plot_mean_times_line(mean_times):
 
 
 if __name__ == '__main__':
+    iterations = [20, 60, 110]  # Example iteration numbers
     mean_times = average_order_time(csvfilename)
-    plot_mean_times_line(mean_times)
+    plot_mean_times_line(mean_times, iterations)
 
